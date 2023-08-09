@@ -1,7 +1,6 @@
 import { FunctionComponent } from "react";
 
 interface AboutProps {
-
 }
 
 const About: FunctionComponent<AboutProps> = () => {

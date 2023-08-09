@@ -30,11 +30,9 @@ function App() {
   let [userInfo, setUserInfo] = useState(JSON.parse(sessionStorage.getItem("userInfo") as string) == null ? { email: false, password: false, role: false } : JSON.parse(sessionStorage.getItem("userInfo") as string));
   let [cards, setCards] = useState<Card[]>([]);
   let [openModal, setOpenModal] = useState<boolean>(false);
-  let { id } = useParams();
-  // let [darkMode, setDarkMode] = useState<boolean>(true);
+  // let { id } = useParams();
   let [darkMode, setDarkMode] = useState<boolean>(JSON.parse(localStorage.getItem("darkMode")!));
   let [users, setUsers] = useState<User[]>([]);
-
   let [user, setUser] = useState<User>({
     firstName: "", middleName: "", lastName: "", phone: "", email: "", password: "", imageUrl: "", imageAlt: "", state: "", country: "", city: "", street: "", houseNumber: 0, zip: "", role: ""
   })
@@ -70,11 +68,11 @@ function App() {
             <Route path='/login' element={<Login setUserInfo={setUserInfo} />} />
             <Route path='/about' element={<About />} />
             <Route path='/favorites' element={<Favorites userInfo={userInfo} openModal={openModal} setOpenModal={setOpenModal} />} />
-            <Route path='/my-cards' element={<MyCards userInfo={userInfo} setUserInfo={setUserInfo} openModal={openModal} setOpenModal={setOpenModal} />} />
+            <Route path='/my-cards' element={<MyCards userInfo={userInfo} openModal={openModal} setOpenModal={setOpenModal} />} />
             <Route path='/new' element={<NewCard userInfo={userInfo} />} />
             <Route path='/update/:id' element={<UpdateCard userInfo={userInfo} />} />
             <Route path='/sandBox' element={<UsersManagment handleUpdateUser={handleUpdateUser} users={users} setUsers={setUsers} />} />
-            <Route path='/update-user/:id' element={<UserUpdate userInfo={userInfo} setUserInfo={setUserInfo} onHide={() => setOpenProfileModal(false)} />} />
+            <Route path='/update-user/:id' element={<UserUpdate userInfo={userInfo} onHide={() => setOpenProfileModal(false)} />} />
             <Route path='*' element={<PageNotFound />} />
           </Routes>
           <Footer userInfo={userInfo} />

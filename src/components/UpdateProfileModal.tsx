@@ -1,7 +1,6 @@
-import { FunctionComponent, useContext, useEffect, useState } from "react";
-import User from "../interfaces/User";
+import { FunctionComponent, useContext, useEffect } from "react";
 import { SiteTheme } from "../App";
-import { getUserByEmail, getUserById } from "../services/usersService";
+import { getUserById } from "../services/usersService";
 import { Modal } from "react-bootstrap";
 import UserUpdate from "./UserUpdate";
 
@@ -35,7 +34,6 @@ const UpdateProfileModal: FunctionComponent<UpdateProfileModalProps> = ({ show, 
                 className={`${theme}`}>
                 <div className="modalContent">
                     <Modal.Header closeButton className="me-4">
-
                         <div className="col-md-3">
                             <img src={user.imageUrl} alt={user.imageAlt} width={120} />
                         </div>
@@ -45,7 +43,7 @@ const UpdateProfileModal: FunctionComponent<UpdateProfileModalProps> = ({ show, 
                     </Modal.Header>
 
                     <Modal.Body>
-                        <UserUpdate userInfo={userInfo} setUserInfo={SetUserInfo} onHide={onHide} />
+                        <UserUpdate userInfo={userInfo} onHide={onHide} />
                     </Modal.Body>
                 </div >
             </Modal >

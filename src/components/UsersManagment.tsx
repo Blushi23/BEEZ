@@ -1,29 +1,26 @@
-import { FunctionComponent, useEffect, useState } from "react";
+import { FunctionComponent, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import User from "../interfaces/User";
 import { deleteUser, getUsers } from "../services/usersService";
 import { successMsg } from "../services/feedbackService";
+import { SiteTheme } from "../App";
 
 interface UsersManagmentProps {
     handleUpdateUser: Function;
     users: User[];
     setUsers: Function;
-
 }
 
 const UsersManagment: FunctionComponent<UsersManagmentProps> = ({ handleUpdateUser, users, setUsers, }) => {
     let navigate = useNavigate()
-    // let [users, setUsers] = useState<User[]>([])
     let [dataChanged, setDataChanged] = useState<boolean>(false);
-    // let [userUpdated, setUserUpdated] = useState<boolean>(false)
-    // let render = () => {
-    //     setDataChanged(!dataChanged)
-    // }
+    let theme = useContext(SiteTheme);
+
     useEffect(() => {
         getUsers()
             .then((res) => setUsers(res.data))
             .catch((err) => console.log(err));
-    }, [dataChanged]);
+    }, [dataChanged, setUsers]);
 
     let handleToDelete = (id: number) => {
         if (window.confirm("Are you sure?")) {
@@ -38,40 +35,41 @@ const UsersManagment: FunctionComponent<UsersManagmentProps> = ({ handleUpdateUs
     };
 
     return (
-        <><div className="container">
-            <h1>CRM System</h1>
-            {users.length ? (
-                <table className="table text-center">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Phone</th>
-                            <th>Email</th>
-                            <th>Role</th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {users.map((user: User) => (
-                            <tr key={user.id}>
-                                <td>{user.id}</td>
-                                <td>{user.firstName}</td>
-                                <td>{user.lastName}</td>
-                                <td>{user.phone}</td>
-                                <td>{user.email}</td>
-                                <td>{user.role}</td>
-                                <td><i className="fa-solid fa-user-pen text-warning" onClick={() => navigate(`/update-user/${user.id}`)}></i></td>
-                                <td>
-                                    <i className="fa-solid fa-user-xmark text-danger" onClick={() => handleToDelete(user.id as number)}></i></td>
+        <>
+            <div className="container">
+                <h1>CRM System</h1>
+                {users.length ? (
+                    <table className="table text-center" data-bs-theme={`${theme}`} >
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th></th>
+                                <th></th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
-            ) : (<p className="text-light">No users yet</p>)}
-        </div >
+                        </thead>
+                        <tbody >
+                            {users.map((user: User) => (
+                                <tr key={user.id}>
+                                    <td>{user.id}</td>
+                                    <td>{user.firstName}</td>
+                                    <td>{user.lastName}</td>
+                                    <td>{user.phone}</td>
+                                    <td>{user.email}</td>
+                                    <td>{user.role}</td>
+                                    <td><i className="fa-solid fa-user-pen text-warning" onClick={() => navigate(`/update-user/${user.id}`)}></i></td>
+                                    <td>
+                                        <i className="fa-solid fa-user-xmark text-danger" onClick={() => handleToDelete(user.id as number)}></i></td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                ) : (<p className="text-light">No users yet</p>)}
+            </div >
         </>
     )
 }

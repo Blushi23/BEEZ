@@ -1,5 +1,5 @@
 import { useFormik } from "formik";
-import { FunctionComponent, useEffect, useState } from "react";
+import { FunctionComponent, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { addUser } from "../services/usersService";
@@ -11,13 +11,11 @@ interface RegisterProps {
 }
 const Register: FunctionComponent<RegisterProps> = ({ setUserInfo }) => {
     let navigate = useNavigate();
-
     let handleToRefresh = () => {
         if (window.confirm("Do you want to clear the form?")) {
             formik.resetForm();
             successMsg("Form is clear")
             formik.setFieldValue("houseNumber", "");
-
         }
     }
     useEffect(() => {
@@ -89,8 +87,7 @@ const Register: FunctionComponent<RegisterProps> = ({ setUserInfo }) => {
                                 onBlur={formik.handleBlur} />
                             <label htmlFor="lastName">Last Name *</label>
                             {formik.touched.lastName && formik.errors.lastName && (<small className="text-danger">{formik.errors.lastName}</small>)}
-                        </div>
-                    </div>
+                        </div></div>
                     <div className="col"><div className="form-floating mb-3">
                         <input name="phone" type="text" className="form-control" id="phone" placeholder="050-0000000"
                             value={formik.values.phone}
@@ -98,8 +95,7 @@ const Register: FunctionComponent<RegisterProps> = ({ setUserInfo }) => {
                             onBlur={formik.handleBlur} />
                         <label htmlFor="phone">Phone *</label>
                         {formik.touched.phone && formik.errors.phone && (<small className="text-danger">{formik.errors.phone}</small>)}
-                    </div></div>
-                </div>
+                    </div></div></div>
                 <div className="row">
                     <div className="col">
                         <div className="form-floating mb-3">
@@ -109,8 +105,7 @@ const Register: FunctionComponent<RegisterProps> = ({ setUserInfo }) => {
                                 onBlur={formik.handleBlur} />
                             <label htmlFor="floatingInput">Email Adress *</label>
                             {formik.touched.email && formik.errors.email && (<small className="text-danger">{formik.errors.email}</small>)}
-                        </div>
-                    </div>
+                        </div></div>
                     <div className="col">
                         <div className="form-floating">
                             <input name="password" type="password" className="form-control" id="floatingPassword" placeholder="Password"
@@ -119,9 +114,7 @@ const Register: FunctionComponent<RegisterProps> = ({ setUserInfo }) => {
                                 onBlur={formik.handleBlur} />
                             <label htmlFor="floatingPassword">Password *</label>
                             {formik.touched.password && formik.errors.password && (<small className="text-danger">{formik.errors.password}</small>)}
-                        </div>
-                    </div>
-                </div>
+                        </div></div></div>
                 <div className="row">
                     <div className="col">
                         <div className="form-floating mb-3">
@@ -130,16 +123,14 @@ const Register: FunctionComponent<RegisterProps> = ({ setUserInfo }) => {
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur} />
                             <label htmlFor="imageUrl">Image Url </label>
-                        </div>
-                    </div>
+                        </div></div>
                     <div className="col"><div className="form-floating mb-3">
                         <input name="imageAlt" type="text" className="form-control" id="imageAlt" placeholder="image"
                             value={formik.values.imageAlt}
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur} />
                         <label htmlFor="imageAlt">Image Alt</label>
-                    </div></div>
-                </div>
+                    </div></div></div>
                 <div className="row">
                     <div className="col">
                         <div className="form-floating mb-3">
@@ -148,8 +139,7 @@ const Register: FunctionComponent<RegisterProps> = ({ setUserInfo }) => {
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur} />
                             <label htmlFor="state">State</label>
-                        </div>
-                    </div>
+                        </div></div>
                     <div className="col"><div className="form-floating mb-3">
                         <input name="country" type="text" className="form-control" id="country" placeholder="israel"
                             value={formik.values.country}
@@ -157,9 +147,7 @@ const Register: FunctionComponent<RegisterProps> = ({ setUserInfo }) => {
                             onBlur={formik.handleBlur} />
                         <label htmlFor="country">Country *</label>
                         {formik.touched.country && formik.errors.country && (<small className="text-danger">{formik.errors.country}</small>)}
-                    </div>
-                    </div>
-                </div>
+                    </div></div></div>
                 <div className="row">
                     <div className="col">
                         <div className="form-floating mb-3">
@@ -169,8 +157,7 @@ const Register: FunctionComponent<RegisterProps> = ({ setUserInfo }) => {
                                 onBlur={formik.handleBlur} />
                             <label htmlFor="city">City *</label>
                             {formik.touched.city && formik.errors.city && (<small className="text-danger">{formik.errors.city}</small>)}
-                        </div>
-                    </div>
+                        </div></div>
                     <div className="col"> <div className="form-floating mb-3">
                         <input name="street" type="text" className="form-control" id="street" placeholder="tel-aviv"
                             value={formik.values.street}
@@ -178,8 +165,7 @@ const Register: FunctionComponent<RegisterProps> = ({ setUserInfo }) => {
                             onBlur={formik.handleBlur} />
                         <label htmlFor="street">Street *</label>
                         {formik.touched.street && formik.errors.street && (<small className="text-danger">{formik.errors.street}</small>)}
-                    </div></div>
-                </div>
+                    </div></div></div>
                 <div className="row">
                     <div className="col">
                         <div className="form-floating mb-3">
@@ -189,8 +175,7 @@ const Register: FunctionComponent<RegisterProps> = ({ setUserInfo }) => {
                                 onBlur={formik.handleBlur} />
                             <label htmlFor="houseNumber">House Number *</label>
                             {formik.touched.houseNumber && formik.errors.houseNumber && (<small className="text-danger">{formik.errors.houseNumber}</small>)}
-                        </div>
-                    </div>
+                        </div></div>
                     <div className="col">  <div className="form-floating mb-3">
                         <input name="zip" type="number" className="form-control" id="zip" placeholder="1"
                             value={formik.values.zip}
@@ -200,11 +185,8 @@ const Register: FunctionComponent<RegisterProps> = ({ setUserInfo }) => {
                     </div></div>
                     <div className="row">
                         <div className="form-check ms-3 text-start fw-bold">
-                            <input
-                                className="form-check-input border-warning"
-                                type="checkbox"
-                                id="roleCheckbox"
-                                name="role"
+                            <input className="form-check-input border-warning"
+                                type="checkbox" id="roleCheckbox" name="role"
                                 checked={formik.values.role === "business"}
                                 onChange={(e) => {
                                     formik.setFieldValue("role", e.target.checked ? "business" : "user");

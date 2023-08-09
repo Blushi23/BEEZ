@@ -7,7 +7,6 @@ import { successMsg } from "../services/feedbackService";
 
 interface NewCardProps {
     userInfo: any;
-
 }
 
 const NewCard: FunctionComponent<NewCardProps> = ({ userInfo }) => {
@@ -106,7 +105,7 @@ const NewCard: FunctionComponent<NewCardProps> = ({ userInfo }) => {
                     </div>
                     <div className="col">
                         <div className="form-floating">
-                            <input name="web" type="web" className="form-control" id="web" placeholder="https://www.example.com"
+                            <input name="web" type="text" className="form-control" id="web" placeholder="https://www.example.com"
                                 value={formik.values.web}
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur} />

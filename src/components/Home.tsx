@@ -27,7 +27,6 @@ const Home: FunctionComponent<HomeProps> = ({ userInfo, openModal, setOpenModal,
             setFavorites(defaultCards)
         }).catch((err) => console.log(err))
         getCards().then((res) => setCards(res.data)).catch((err) => console.log(err));
-
     }, [cardsChanged, setCards, userInfo.userId]);
 
     let render = () => {
@@ -43,7 +42,6 @@ const Home: FunctionComponent<HomeProps> = ({ userInfo, openModal, setOpenModal,
                 .catch((err) => console.log(err));
         }
     };
-
     let handleAddToFav = (card: Card) => {
         if (favorites.includes(card.id as number)) {
             removeFromFav(userInfo.userId, card.id as number)
@@ -68,7 +66,6 @@ const Home: FunctionComponent<HomeProps> = ({ userInfo, openModal, setOpenModal,
             <h4 className="text-center">Here you can find all the businesses youv'e been looking for</h4>
             {(userInfo.role === "business" || userInfo.role === "admin") && (
                 <Link to="/new" className="btn btn-success rounded-5"><i className="fa-solid fa-plus"></i></Link>)}
-
             {cards.length ? (
                 <div className="container">
                     <div className="row">
@@ -94,7 +91,6 @@ const Home: FunctionComponent<HomeProps> = ({ userInfo, openModal, setOpenModal,
                                     <p className="card-text">{card.description}</p>
                                     <p className="card-text">Phone: {card.phone} </p>
                                     <p className="card-text">Adress: {card.street} {card.houseNumber}, {card.city}, {card.country}</p>
-
                                     <div className="cardIcons">
                                         <div className="row">
                                             {userInfo.email && (
@@ -112,7 +108,6 @@ const Home: FunctionComponent<HomeProps> = ({ userInfo, openModal, setOpenModal,
                                                     <div className="col right-icons text-end">
                                                         <Link to={`tel:${card.phone}`}>
                                                             <i className="fa-solid fa-phone"></i></Link>
-
                                                         {userInfo.role && (favorites.includes(card.id as number) ? (<button className="btn star" onClick={() => handleAddToFav(card)}> <i className="fa-solid fa-star text-warning" ></i></button>) : (<button className="btn star" onClick={() => handleAddToFav(card)}> <i className="fa-regular fa-star" ></i></button>)
                                                         )}
                                                     </div>

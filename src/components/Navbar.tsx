@@ -1,4 +1,4 @@
-import { FunctionComponent, useContext, useEffect, useState } from "react";
+import { FunctionComponent, useContext, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { SiteTheme } from "../App";
 import UpdateProfileModal from "./UpdateProfileModal";
@@ -11,13 +11,11 @@ interface NavbarProps {
     setDarkMode: Function;
     user: User;
     setUser: Function;
-
 }
 const Navbar: FunctionComponent<NavbarProps> = ({ userInfo, setUserInfo, darkMode, setDarkMode, user, setUser }) => {
     let navigate = useNavigate();
     let theme = useContext(SiteTheme);
     let [openProfileModal, setOpenProfileModal] = useState<boolean>(false)
-
     let logout = () => {
         sessionStorage.removeItem("userInfo");
         setUserInfo({ email: false, role: false });
@@ -26,8 +24,7 @@ const Navbar: FunctionComponent<NavbarProps> = ({ userInfo, setUserInfo, darkMod
 
     return (
         <>
-            <nav className={`navbar navbar-expand-lg`} data-bs-theme={`${theme}`}
-            >
+            <nav className={`navbar navbar-expand-lg`} data-bs-theme={`${theme}`}>
                 <div className="container-fluid">
                     <NavLink className="navbar-brand" to="/"><img src="/images/logo-lightBee.png" alt="logo" width={120} /></NavLink>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,38 +52,29 @@ const Navbar: FunctionComponent<NavbarProps> = ({ userInfo, setUserInfo, darkMod
                                             }
                                         </>)}
                                 </>)}
-
                         </ul>
-                        <form className="d-flex" role="search">
-                            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                            <button className="btn btn-outline-warning" type="submit">Search</button>
-
-                            <div className="form-check">
-                                <input
-                                    className="form-check-input"
-                                    type="checkbox"
-                                    id="flexSwitchCheckDefault"
-                                    onChange={() => {
-                                        setDarkMode(!darkMode);
-                                        localStorage.setItem("darkMode", JSON.stringify(!darkMode))
-                                    }}
-                                    style={{ display: "none" }}
-                                />
-                                <label className="form-check-label darkModeButton" htmlFor="flexSwitchCheckDefault"><i className="fa-solid fa-circle-half-stroke"></i></label>
-                            </div>
-
+                        <form className="form-check">
+                            <input
+                                className="form-check-input"
+                                type="checkbox"
+                                id="flexSwitchCheckDefault"
+                                onChange={() => {
+                                    setDarkMode(!darkMode);
+                                    localStorage.setItem("darkMode", JSON.stringify(!darkMode))
+                                }}
+                                style={{ display: "none" }}
+                            />
+                            <label className="form-check-label darkModeButton" htmlFor="flexSwitchCheckDefault"><i className="fa-solid fa-circle-half-stroke"></i></label>
                             {userInfo.email && (
                                 <>
                                     <img src={user.imageUrl ? (`${user.imageUrl}`) : ("/images/avatar.png")} className="rounded-circle ms-2 profileImage" width="35" alt="user" onClick={() => setOpenProfileModal(true)}></img>
                                     <button className="btn" type="button" onClick={logout}>Logout</button>
-
                                 </>
                             )}
                             {!userInfo.email && (
                                 <>
                                     <button className="btn" onClick={() => navigate("/register")}>Register</button>
                                     <button className="btn" onClick={() => navigate("/login")}>Login</button>
-
                                 </>)}
                         </form>
                     </div>

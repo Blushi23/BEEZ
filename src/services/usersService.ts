@@ -1,7 +1,6 @@
 import axios from "axios";
 import User from "../interfaces/User";
 
-
 let api: string = `${process.env.REACT_APP_API}/users`;
 
 export function addUser(newUser: User) {

@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "firstName": "Michal",
+      "firstName": "Michali",
       "middleName": "",
       "lastName": "Duvidzon",
       "phone": "050-3402226",
@@ -13,7 +13,7 @@
       "city": "Hadera",
       "street": "Arlozorov",
       "houseNumber": 1,
-      "zip": "3822802",
+      "zip": "382280",
       "role": "admin",
       "id": 1
     },

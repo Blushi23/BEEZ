@@ -7,13 +7,11 @@ import BusinessModal from "./BusinessModal";
 
 interface MyCardsProps {
     userInfo: any;
-    setUserInfo: Function;
     openModal: boolean;
     setOpenModal: Function;
-
 }
 
-const MyCards: FunctionComponent<MyCardsProps> = ({ userInfo, setUserInfo, openModal, setOpenModal }) => {
+const MyCards: FunctionComponent<MyCardsProps> = ({ userInfo, openModal, setOpenModal }) => {
     let [cardsCreated, setCardsCreated] = useState<Card[]>([]);
     let [cardsChanged, setCardsChanged] = useState<boolean>(false);
 
@@ -66,7 +64,6 @@ const MyCards: FunctionComponent<MyCardsProps> = ({ userInfo, setUserInfo, openM
                                     <p className="card-text">{card.description}</p>
                                     <p className="card-text">Phone: {card.phone} </p>
                                     <p className="card-text">Adress: {card.street} {card.houseNumber}, {card.city}, {card.country}</p>
-
                                     <div className="cardIcons">
                                         <div className="row">
                                             {userInfo.email && (
@@ -81,7 +78,6 @@ const MyCards: FunctionComponent<MyCardsProps> = ({ userInfo, setUserInfo, openM
                                                 </>
                                             )}
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
