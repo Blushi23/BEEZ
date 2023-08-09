@@ -1,0 +1,93 @@
+:root {
+  --background-color: #fff;
+  --card-background: #d2d6d8;
+  --about-background: #f5e8a76c;
+  --text-color: #000;
+  --card-border: 2px solid #c1bebc;
+  --modal-color: #f2f2f2;
+  --red-color: #c62828;
+  --yellow-color: #ffb300;
+  --floating-label: #272626;
+}
+
+.dark {
+  --background-color: #1a1e23;
+  --card-background: #3A4750;
+  --about-background: #30302fe6;
+  --text-color: #d8d1d1;
+  --card-border: 2px solid #f3f0dc;
+  --modal-color: #1a1919c7;
+  --red-color: #c62828;
+  --yellow-color: #ffb300;
+  --floating-label: #ff851b;
+
+}
+
+.App {
+  background: var(--background-color);
+  color: var(--text-color)
+}
+
+.card {
+  background: var(--background-color);
+  color: var(--text-color);
+  border: var(--card-border);
+}
+
+p,
+h2,
+h3,
+h4,
+h5,
+.register-link {
+  color: var(--text-color);
+}
+
+.about {
+  border: 12px ridge #ffa42edb;
+  margin: 15px;
+  background-color: var(--about-background);
+}
+
+.about-content {
+  margin: 25px;
+  text-align: justify;
+  font-size: 1rem;
+  color: var(--text-color);
+  opacity: 0.8;
+}
+
+.darkModeButton {
+  margin-top: 5px;
+}
+
+.modalContent {
+  background-color: var(--modal-color);
+}
+
+.fa-pencil,
+.star {
+  color: var(--text-color);
+}
+
+.profileImage {
+  border: 1.5px solid var(--text-color);
+}
+
+.backBtn,
+.refreshBtn {
+  border: 2px solid var(--yellow-color);
+  color: var(--text-color);
+  font-weight: bold
+}
+
+.backBtn:hover,
+.refreshBtn:hover {
+  background: var(--yellow-color);
+  color: #000;
+  ;
+}
+
+.form-floating label {
+  color: var(--floating-label);
+}

@@ -1,0 +1,61 @@
+@import "/node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css";
+
+
+.container-register {
+    text-align: center;
+    margin: 0 20px;
+}
+
+h1,
+h3,
+.home-title {
+    font-family: 'Lumanosimo', cursive;
+    text-align: center;
+}
+
+.fa-circle-half-stroke {
+    margin: 10px 5px 0 0;
+}
+
+.about-content h3 {
+    font-weight: bold;
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+}
+
+.cardIcons {
+    position: absolute;
+    bottom: 0;
+    width: 90%;
+}
+
+.star {
+    margin-bottom: 3px;
+}
+
+.star:hover {
+    color: #facf34;
+}
+
+.fa-phone {
+    color: green
+}
+
+.fa-trash {
+    color: var(--red-color);
+}
+
+.card {
+    text-align: justify;
+}
+
+.register-link {
+    text-decoration-color: #ff851b;
+}
+
+.dnf-content {
+    line-height: 2;
+    margin: 11px;
+    font-size: 1.2rem;
+}
