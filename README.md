@@ -18,7 +18,7 @@ We hope you enjoy using BEEZ and discovering new businesses! If you have any que
 
 <h3>REACT set up</h3>
 
-downloads needed: react-router-dom, Bootstrap, react-bootstrap, axios, formik, yup, react-toastify, react-hooks.
-add node_modules folder: run in the terminal npm install.
-run db.json:  json-server --watch db.json --port 8000.
-run the app: npm start.
+<li>downloads needed: react-router-dom, Bootstrap, react-bootstrap, axios, formik, yup, react-toastify, react-hooks.</li>
+<li>add node_modules folder: run in the terminal npm install.</li>
+<li>run db.json:  json-server --watch db.json --port 8000.</li>
+<li>run the app: npm start.</li>
