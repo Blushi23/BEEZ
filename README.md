@@ -1,20 +1,20 @@
 
-BEEZ is a business card site where users can find all kinds of businesses and add them to their favorites. The site allows businesses to create, edit, and delete their own cards, providing a convenient way for them to showcase their products and services to potential customers.
+<p>BEEZ is a business card site where users can find all kinds of businesses and add them to their favorites. <br> The site allows businesses to create, edit, and delete their own cards, providing a convenient way for them to showcase their products and services to potential customers.</p>
 
-In addition to the standard user and business user features, BEEZ also includes an admin user role that allows for greater control over the site’s content. Admin users have the ability to manage all registered users and perform CRUD (Create, Read, Update, Delete) functions for all cards on the site.
+<p>In addition to the standard user and business user features, BEEZ also includes an admin user role that allows for greater control over the site’s content. Admin users have the ability to manage all registered users and perform CRUD (Create, Read, Update, Delete) functions for all cards on the site.</p>
 
-With its user-friendly interface and powerful features, BEEZ makes it easy for users to discover new businesses and for businesses to connect with potential customers. Whether you’re a user looking for new products and services or a business owner looking to expand your reach, BEEZ has something for everyone.
+<p>With its user-friendly interface and powerful features, BEEZ makes it easy for users to discover new businesses and for businesses to connect with potential customers. Whether you’re a user looking for new products and services or a business owner looking to expand your reach, BEEZ has something for everyone.</p>
 
 <h3>Features</h3>
-Find Businesses: Browse through a wide selection of business cards to discover new products and services.
-Add to Favorites: Keep track of your favorite businesses by adding their cards to your favorites list.
-Manage Cards: Businesses can create, edit, and delete their own cards to showcase their products and services.
-Admin Control: Admin users have the ability to manage all registered users and perform CRUD functions for all cards on the site.
+<li>Find Businesses: Browse through a wide selection of business cards to discover new products and services.</li>
+<li>Add to Favorites: Keep track of your favorite businesses by adding their cards to your favorites list.</li>
+<li>Manage Cards: Businesses can create, edit, and delete their own cards to showcase their products and services.</li>
+<li>Admin Control: Admin users have the ability to manage all registered users and perform CRUD functions for all cards on the site.</li>
 
 <h3>Getting Started</h3>
-To get started with BEEZ, simply create an account and start browsing through the available business cards and save your favorites. If you’re a business owner, you can create your own card to showcase your products and services to potential customers.
+<p>To get started with BEEZ, simply create an account and start browsing through the available business cards and save your favorites. If you’re a business owner, you can create your own card to showcase your products and services to potential customers.</p>
 
-We hope you enjoy using BEEZ and discovering new businesses! If you have any questions or feedback, please don’t hesitate to get in touch with us.
+<p>We hope you enjoy using BEEZ and discovering new businesses! If you have any questions or feedback, please don’t hesitate to get in touch with us.</p>
 
 <h3>REACT set up</h3>
 
