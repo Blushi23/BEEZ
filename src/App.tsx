@@ -26,7 +26,6 @@ let theme = {
 
 export let SiteTheme = createContext(theme.light);
 
-
 function App() {
   let [userInfo, setUserInfo] = useState(JSON.parse(sessionStorage.getItem("userInfo") as string) == null ? { email: false, password: false, role: false } : JSON.parse(sessionStorage.getItem("userInfo") as string));
   let [cards, setCards] = useState<Card[]>([]);
@@ -34,18 +33,26 @@ function App() {
   let { id } = useParams();
   // let [darkMode, setDarkMode] = useState<boolean>(true);
   let [darkMode, setDarkMode] = useState<boolean>(JSON.parse(localStorage.getItem("darkMode")!));
+  let [users, setUsers] = useState<User[]>([]);
+
   let [user, setUser] = useState<User>({
     firstName: "", middleName: "", lastName: "", phone: "", email: "", password: "", imageUrl: "", imageAlt: "", state: "", country: "", city: "", street: "", houseNumber: 0, zip: "", role: ""
   })
   let [openProfileModal, setOpenProfileModal] = useState<boolean>(false)
 
-
   useEffect(() => {
     getUserById(userInfo.userId as number)
       .then((res) => setUser(res.data))
       .catch((err) => console.log(err))
+  }, [userInfo.userId]);
 
-  }, []);
+
+  const handleUpdateUser = (updatedUser: User) => {
+    setUsers((prevUsers) =>
+      prevUsers.map((user) => (user.id === updatedUser.id ? updatedUser : user))
+    );
+  };
+
 
   return (
     <div className={`App ${darkMode ? theme.light : theme.dark}`} >
@@ -66,7 +73,7 @@ function App() {
             <Route path='/my-cards' element={<MyCards userInfo={userInfo} setUserInfo={setUserInfo} openModal={openModal} setOpenModal={setOpenModal} />} />
             <Route path='/new' element={<NewCard userInfo={userInfo} />} />
             <Route path='/update/:id' element={<UpdateCard userInfo={userInfo} />} />
-            <Route path='/sandBox' element={<UsersManagment />} />
+            <Route path='/sandBox' element={<UsersManagment handleUpdateUser={handleUpdateUser} users={users} setUsers={setUsers} />} />
             <Route path='/update-user/:id' element={<UserUpdate userInfo={userInfo} setUserInfo={setUserInfo} onHide={() => setOpenProfileModal(false)} />} />
             <Route path='*' element={<PageNotFound />} />
           </Routes>

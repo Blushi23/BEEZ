@@ -1,16 +1,20 @@
 import { useFormik } from "formik";
-import { FunctionComponent } from "react";
+import { FormEvent, FunctionComponent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { checkUser } from "../services/usersService";
 import { errorMsg, successMsg } from "../services/feedbackService";
+import User from "../interfaces/User";
 
 interface LoginProps {
     setUserInfo: Function;
+    // onLogin: Function;
+    // user: User;
 }
 
 const Login: FunctionComponent<LoginProps> = ({ setUserInfo }) => {
     let navigate = useNavigate();
+
     let formik = useFormik({
         initialValues: { email: "", password: "" },
         validationSchema: yup.object({
@@ -20,6 +24,7 @@ const Login: FunctionComponent<LoginProps> = ({ setUserInfo }) => {
         onSubmit: (values) => {
             checkUser(values)
                 .then((res) => {
+
                     if (res.data.length) {
                         navigate("/");
                         successMsg(`You are logged in as ${values.email}`);
@@ -28,6 +33,7 @@ const Login: FunctionComponent<LoginProps> = ({ setUserInfo }) => {
                             userId: res.data[0].id,
                         }));
                         setUserInfo(JSON.parse(sessionStorage.getItem("userInfo") as string))
+                        // onLogin();
                     }
                     else errorMsg("Wrong email or password");
                 })

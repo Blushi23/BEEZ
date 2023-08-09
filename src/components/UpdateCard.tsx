@@ -112,7 +112,7 @@ const UpdateCard: FunctionComponent<UpdateCardProps> = ({ userInfo }) => {
                         </div>
                         <div className="col">
                             <div className="form-floating">
-                                <input name="web" type="url" className="form-control" id="web" placeholder="https://www.example.com"
+                                <input name="web" type="text" className="form-control" id="web" placeholder="https://www.example.com"
                                     value={formik.values.web}
                                     onChange={formik.handleChange}
                                     onBlur={formik.handleBlur} />

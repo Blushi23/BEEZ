@@ -1,22 +1,23 @@
 import { FunctionComponent, useContext, useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { SiteTheme } from "../App";
-import User from "../interfaces/User";
 import UpdateProfileModal from "./UpdateProfileModal";
+import User from "../interfaces/User";
 
 interface NavbarProps {
     userInfo: any;
     setUserInfo: Function;
     darkMode: boolean;
     setDarkMode: Function;
-    user: any;
+    user: User;
     setUser: Function;
-}
 
+}
 const Navbar: FunctionComponent<NavbarProps> = ({ userInfo, setUserInfo, darkMode, setDarkMode, user, setUser }) => {
     let navigate = useNavigate();
     let theme = useContext(SiteTheme);
     let [openProfileModal, setOpenProfileModal] = useState<boolean>(false)
+
     let logout = () => {
         sessionStorage.removeItem("userInfo");
         setUserInfo({ email: false, role: false });
@@ -74,16 +75,9 @@ const Navbar: FunctionComponent<NavbarProps> = ({ userInfo, setUserInfo, darkMod
                                 <label className="form-check-label darkModeButton" htmlFor="flexSwitchCheckDefault"><i className="fa-solid fa-circle-half-stroke"></i></label>
                             </div>
 
-
                             {userInfo.email && (
                                 <>
                                     <img src={user.imageUrl ? (`${user.imageUrl}`) : ("/images/avatar.png")} className="rounded-circle ms-2 profileImage" width="35" alt="user" onClick={() => setOpenProfileModal(true)}></img>
-
-                                    {/* <img src="/images/avatar.png" className="rounded-circle ms-2" width="30" alt="user"></img> */}
-                                    {/* {userInfo.email && (
-                                <>
-                                    <img src="/images/avatar.png" className="rounded-circle ms-2" width="30"
-                                        alt="user"></img> */}
                                     <button className="btn" type="button" onClick={logout}>Logout</button>
 
                                 </>
@@ -104,7 +98,6 @@ const Navbar: FunctionComponent<NavbarProps> = ({ userInfo, setUserInfo, darkMod
                 onHide={() => setOpenProfileModal(false)}
                 userId={openProfileModal}
             />
-
         </>
     )
 }

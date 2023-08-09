@@ -11,7 +11,6 @@ interface UpdateCardProps {
     setUserInfo: Function;
     onHide: Function;
 
-
 }
 const UpdateCard: FunctionComponent<UpdateCardProps> = ({ userInfo, setUserInfo, onHide }) => {
 
@@ -61,7 +60,6 @@ const UpdateCard: FunctionComponent<UpdateCardProps> = ({ userInfo, setUserInfo,
                 })
                 .catch((err) => console.log(err))
         }
-
     })
     return (
         <>
@@ -132,7 +130,7 @@ const UpdateCard: FunctionComponent<UpdateCardProps> = ({ userInfo, setUserInfo,
                     <div className="row">
                         <div className="col">
                             <div className="form-floating mb-3">
-                                <input name="imageUrl" type="url" className="form-control" id="imageUrl" placeholder="https://example.photos/545"
+                                <input name="imageUrl" type="string" className="form-control" id="imageUrl" placeholder="https://example.photos/545"
                                     value={formik.values.imageUrl}
                                     onChange={formik.handleChange}
                                     onBlur={formik.handleBlur} />

@@ -65,7 +65,7 @@
       "city": "test",
       "street": "test",
       "houseNumber": 3,
-      "zip": "678566",
+      "zip": "6785668",
       "role": "user",
       "id": 4
     },
@@ -94,8 +94,8 @@
       "phone": "0542233456",
       "email": "mew@gmail.com",
       "password": "mE222211!",
-      "imageUrl": "",
-      "imageAlt": "",
+      "imageUrl": "https://image.lexica.art/full_jpg/9fef7eca-0178-40e6-a022-b9dbca324eac",
+      "imageAlt": "cat",
       "state": "",
       "country": "ישראל",
       "city": "חדרה",
@@ -104,6 +104,24 @@
       "zip": "12345",
       "role": "business",
       "id": 7
+    },
+    {
+      "firstName": "Maplon",
+      "middleName": "",
+      "lastName": "Duvidzon",
+      "phone": "050-1122345",
+      "email": "maple@maple.com",
+      "password": "Mapmap2!",
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVRrsefZiyW2u2FbuUBvBg3k-YKtbe9ONe-w&usqp=CAU",
+      "imageAlt": "maple",
+      "state": "",
+      "country": "israel",
+      "city": "HADERA",
+      "street": "arlozorov",
+      "houseNumber": 1,
+      "zip": "",
+      "role": "user",
+      "id": 8
     }
   ],
   "cards": [
@@ -138,7 +156,7 @@
       "country": "United States",
       "city": "New York City",
       "street": "Park Avenue",
-      "houseNumber": 4,
+      "houseNumber": 452,
       "zip": "10001",
       "owner": "mew@gmail.com",
       "id": 2
@@ -327,6 +345,24 @@
           "zip": "10001",
           "owner": "mew@gmail.com",
           "id": 2
+        },
+        {
+          "title": "Blossom Floral",
+          "subtitle": "Expressing Emotions with Flowers",
+          "description": "Blossom Florals is a boutique flower shop that creates stunning floral arrangements for every occasion. From romantic bouquets to elegant centerpieces, our skilled florists craft each arrangement with care and creativity. We source the freshest and most exquisite flowers to convey your emotions and add a touch of beauty to your special moments. Let Blossom Florals be your go-to destination for all things floral.",
+          "phone": "052-1112255",
+          "email": "info@blossomflorals.com",
+          "web": "www.blossomflorals.com",
+          "imageUrl": "https://blossom-israel.co.il/cdn/shop/collections/image3_625x625@2x.png?v=1634913544",
+          "imageAlt": "Blossom Florals Flower Shop",
+          "state": "",
+          "country": "Israel",
+          "city": "Rishon Lezion",
+          "street": "Eliezer Balaban",
+          "houseNumber": 13,
+          "zip": "666001",
+          "owner": "israel@gmail.com",
+          "id": 8
         }
       ],
       "id": 7
@@ -486,6 +522,11 @@
         }
       ],
       "id": 1
+    },
+    {
+      "userId": 8,
+      "cards": [],
+      "id": 8
     }
   ]
 }

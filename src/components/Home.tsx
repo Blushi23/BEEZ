@@ -29,7 +29,6 @@ const Home: FunctionComponent<HomeProps> = ({ userInfo, openModal, setOpenModal,
         getCards().then((res) => setCards(res.data)).catch((err) => console.log(err));
 
     }, [cardsChanged, setCards, userInfo.userId]);
-    //לבדוק אם באמת יש צורך ב-dependency של set cards
 
     let render = () => {
         setCardsChanged(!cardsChanged)

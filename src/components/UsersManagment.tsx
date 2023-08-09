@@ -5,12 +5,15 @@ import { deleteUser, getUsers } from "../services/usersService";
 import { successMsg } from "../services/feedbackService";
 
 interface UsersManagmentProps {
+    handleUpdateUser: Function;
+    users: User[];
+    setUsers: Function;
 
 }
 
-const UsersManagment: FunctionComponent<UsersManagmentProps> = () => {
+const UsersManagment: FunctionComponent<UsersManagmentProps> = ({ handleUpdateUser, users, setUsers, }) => {
     let navigate = useNavigate()
-    let [users, setUsers] = useState<User[]>([])
+    // let [users, setUsers] = useState<User[]>([])
     let [dataChanged, setDataChanged] = useState<boolean>(false);
     // let [userUpdated, setUserUpdated] = useState<boolean>(false)
     // let render = () => {
