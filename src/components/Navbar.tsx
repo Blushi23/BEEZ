@@ -46,7 +46,7 @@ const Navbar: FunctionComponent<NavbarProps> = ({ userInfo, setUserInfo, darkMod
                                             <li className="nav-item">
                                                 <NavLink className="nav-link" to="my-cards">My Cards</NavLink>
                                             </li>
-                                            {userInfo.role == "admin" &&
+                                            {userInfo.role === "admin" &&
                                                 <li className="nav-item">
                                                     <NavLink className="nav-link" to="/sandBox">Sandbox</NavLink>
                                                 </li>
@@ -82,7 +82,7 @@ const Navbar: FunctionComponent<NavbarProps> = ({ userInfo, setUserInfo, darkMod
                 </div>
             </nav >
 
-            <UpdateProfileModal user={user} setUser={setUser} userInfo={userInfo} SetUserInfo={setUserInfo} handleUpdateUser={handleUpdateUser}
+            <UpdateProfileModal user={user} setUser={setUser} userInfo={userInfo} handleUpdateUser={handleUpdateUser}
                 show={openProfileModal}
                 onHide={() => setOpenProfileModal(false)}
                 userId={openProfileModal}

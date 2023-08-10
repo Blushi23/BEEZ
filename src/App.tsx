@@ -45,20 +45,15 @@ function App() {
     }
   }, [userInfo.userId]);
 
-
   const handleUpdateUser = (updatedUser: User) => {
     setUsers((prevUsers) =>
       prevUsers.map((user) => (user.id === updatedUser.id ? updatedUser : user))
     );
   };
 
-
-
   return (
     <div className={`App ${darkMode ? theme.light : theme.dark}`} >
-
       <SiteTheme.Provider value={darkMode ? "light" : "dark"}>
-
         <ToastContainer theme={`${darkMode ? "dark" : "light"}`} />
         <Router>
           <Navbar userInfo={userInfo} setUserInfo={setUserInfo} setDarkMode={setDarkMode} darkMode={darkMode} user={user} setUser={setUser} handleUpdateUser={handleUpdateUser} />

@@ -9,13 +9,12 @@ interface UpdateProfileModalProps {
     onHide: Function;
     userId: any;
     userInfo: any;
-    SetUserInfo: Function;
     user: any;
     setUser: Function;
     handleUpdateUser: Function
 }
 
-const UpdateProfileModal: FunctionComponent<UpdateProfileModalProps> = ({ show, onHide, userId, userInfo, SetUserInfo, user, setUser, handleUpdateUser }) => {
+const UpdateProfileModal: FunctionComponent<UpdateProfileModalProps> = ({ show, onHide, userId, userInfo, user, setUser, handleUpdateUser }) => {
     let theme = useContext(SiteTheme);
 
     useEffect(() => {
