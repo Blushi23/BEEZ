@@ -47,7 +47,7 @@ const BusinessModal: FunctionComponent<BusinessModalProps> = ({ show, onHide, ca
                         <div className="row mt-3">
                             <h4 className="text-center">Contact us</h4>
                             <div className="col-md-7">
-                                <BusinessMap />
+                                <BusinessMap card={card} />
                             </div>
                             <div className="col-md-5">
                                 <p>Phone: {card.phone}</p>
