@@ -38,9 +38,11 @@ function App() {
   let [openProfileModal, setOpenProfileModal] = useState<boolean>(false)
 
   useEffect(() => {
-    getUserById(userInfo.userId as number)
-      .then((res) => setUser(res.data))
-      .catch((err) => console.log(err))
+    if (userInfo.userId) {
+      getUserById(userInfo.userId as number)
+        .then((res) => setUser(res.data))
+        .catch((err) => console.log(err))
+    }
   }, [userInfo.userId]);
 
 
