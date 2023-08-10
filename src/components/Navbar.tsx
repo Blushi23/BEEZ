@@ -11,8 +11,9 @@ interface NavbarProps {
     setDarkMode: Function;
     user: User;
     setUser: Function;
+    handleUpdateUser: Function
 }
-const Navbar: FunctionComponent<NavbarProps> = ({ userInfo, setUserInfo, darkMode, setDarkMode, user, setUser }) => {
+const Navbar: FunctionComponent<NavbarProps> = ({ userInfo, setUserInfo, darkMode, setDarkMode, user, setUser, handleUpdateUser }) => {
     let navigate = useNavigate();
     let theme = useContext(SiteTheme);
     let [openProfileModal, setOpenProfileModal] = useState<boolean>(false)
@@ -81,7 +82,7 @@ const Navbar: FunctionComponent<NavbarProps> = ({ userInfo, setUserInfo, darkMod
                 </div>
             </nav >
 
-            <UpdateProfileModal user={user} setUser={setUser} userInfo={userInfo} SetUserInfo={setUserInfo}
+            <UpdateProfileModal user={user} setUser={setUser} userInfo={userInfo} SetUserInfo={setUserInfo} handleUpdateUser={handleUpdateUser}
                 show={openProfileModal}
                 onHide={() => setOpenProfileModal(false)}
                 userId={openProfileModal}

@@ -12,9 +12,10 @@ interface UpdateProfileModalProps {
     SetUserInfo: Function;
     user: any;
     setUser: Function;
+    handleUpdateUser: Function
 }
 
-const UpdateProfileModal: FunctionComponent<UpdateProfileModalProps> = ({ show, onHide, userId, userInfo, SetUserInfo, user, setUser }) => {
+const UpdateProfileModal: FunctionComponent<UpdateProfileModalProps> = ({ show, onHide, userId, userInfo, SetUserInfo, user, setUser, handleUpdateUser }) => {
     let theme = useContext(SiteTheme);
 
     useEffect(() => {
@@ -43,7 +44,7 @@ const UpdateProfileModal: FunctionComponent<UpdateProfileModalProps> = ({ show, 
                     </Modal.Header>
 
                     <Modal.Body>
-                        <UserUpdate userInfo={userInfo} onHide={onHide} />
+                        <UserUpdate userInfo={userInfo} onHide={onHide} handleUpdateUser={handleUpdateUser} />
                     </Modal.Body>
                 </div >
             </Modal >

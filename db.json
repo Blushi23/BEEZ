@@ -56,7 +56,7 @@
       "firstName": "Garfield",
       "middleName": "",
       "lastName": "The Cat",
-      "phone": "0542233456",
+      "phone": "052-538444",
       "email": "mew@gmail.com",
       "password": "mE222211!",
       "imageUrl": "https://yt3.googleusercontent.com/ytc/AOPolaTauhO4frxbGDA1vb754WHFOTHml5qgvuEYOtsyeg=s900-c-k-c0x00ffffff-no-rj",
@@ -233,24 +233,6 @@
       "zip": "",
       "owner": "michalbl12@gmail.com",
       "id": 13
-    },
-    {
-      "title": "בלה בלה",
-      "subtitle": "בלה בלה",
-      "description": "בלה",
-      "phone": "000000000",
-      "email": "bla@bla.com",
-      "web": "",
-      "imageUrl": "",
-      "imageAlt": "",
-      "state": "",
-      "country": "israel",
-      "city": "tel aviv",
-      "street": "kehilat riga",
-      "houseNumber": 7,
-      "zip": "",
-      "owner": "mew@gmail.com",
-      "id": 14
     }
   ],
   "favorites": [
@@ -310,24 +292,6 @@
           "zip": "75003",
           "owner": "israel@gmail.com",
           "id": 7
-        },
-        {
-          "title": "בלה בלה",
-          "subtitle": "בלה בלה",
-          "description": "בלה",
-          "phone": "000000000",
-          "email": "bla@bla.com",
-          "web": "",
-          "imageUrl": "",
-          "imageAlt": "",
-          "state": "",
-          "country": "israel",
-          "city": "tel aviv",
-          "street": "kehilat riga",
-          "houseNumber": 7,
-          "zip": "",
-          "owner": "mew@gmail.com",
-          "id": 14
         }
       ],
       "id": 5
@@ -418,6 +382,24 @@
           "zip": "80600",
           "owner": "michalbl12@gmail.com",
           "id": 1
+        },
+        {
+          "title": "Hudson Brasserie",
+          "subtitle": "Best meat restaurant in Town",
+          "description": "Hudson is an American-inspired meat restaurant. The menu includes a variety of cuts, burgers, sandwiches and a variety of classic dishes with a unique twist. Our raw materials are at the highest level, fresh and excellent and we try to let them “speak for themselves”. Our meat processing process is unique and uncompromising, the meats receive dedicated and meticulous care at our butchers.",
+          "phone": "03-644-4733",
+          "email": "Hudson@gmail.com",
+          "web": "https://hudson-tlv.com/en/hudson-restaurant-hudson-restaurant-27-habarzel-st-ramat-hahayal/",
+          "imageUrl": "https://imageproxy.wolt.com/venue/5cf3e1bda9a5e85da46e986e/4bf155c6-2c23-11ec-b9eb-9e746a5275b2_karela_01032.jpg",
+          "imageAlt": "Hudson Brasserie",
+          "state": "",
+          "country": "Israel",
+          "city": "Tel Aviv",
+          "street": "Habarzel st.",
+          "houseNumber": 23,
+          "zip": "",
+          "owner": "michalbl12@gmail.com",
+          "id": 3
         }
       ],
       "id": 1

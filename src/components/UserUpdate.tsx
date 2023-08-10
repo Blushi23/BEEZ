@@ -9,8 +9,9 @@ import User from "../interfaces/User";
 interface UpdateCardProps {
     userInfo: any;
     onHide: Function;
+    handleUpdateUser: Function;
 }
-const UpdateCard: FunctionComponent<UpdateCardProps> = ({ userInfo, onHide }) => {
+const UpdateCard: FunctionComponent<UpdateCardProps> = ({ userInfo, onHide, handleUpdateUser }) => {
 
     let { id } = useParams();
     let userId = id ? id : userInfo.userId
@@ -48,6 +49,7 @@ const UpdateCard: FunctionComponent<UpdateCardProps> = ({ userInfo, onHide }) =>
         onSubmit: (values) => {
             updateUser(values, Number(userId))
                 .then((res) => {
+                    handleUpdateUser(res.data)
                     if (id) { navigate(-1) }
                     else { onHide() };
                     successMsg("User updated successfully!")

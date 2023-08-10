@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route, useParams } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Register from './components/Register';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
@@ -30,7 +30,6 @@ function App() {
   let [userInfo, setUserInfo] = useState(JSON.parse(sessionStorage.getItem("userInfo") as string) == null ? { email: false, password: false, role: false } : JSON.parse(sessionStorage.getItem("userInfo") as string));
   let [cards, setCards] = useState<Card[]>([]);
   let [openModal, setOpenModal] = useState<boolean>(false);
-  // let { id } = useParams();
   let [darkMode, setDarkMode] = useState<boolean>(JSON.parse(localStorage.getItem("darkMode")!));
   let [users, setUsers] = useState<User[]>([]);
   let [user, setUser] = useState<User>({
@@ -52,6 +51,7 @@ function App() {
   };
 
 
+
   return (
     <div className={`App ${darkMode ? theme.light : theme.dark}`} >
 
@@ -59,7 +59,7 @@ function App() {
 
         <ToastContainer theme={`${darkMode ? "dark" : "light"}`} />
         <Router>
-          <Navbar userInfo={userInfo} setUserInfo={setUserInfo} setDarkMode={setDarkMode} darkMode={darkMode} user={user} setUser={setUser} />
+          <Navbar userInfo={userInfo} setUserInfo={setUserInfo} setDarkMode={setDarkMode} darkMode={darkMode} user={user} setUser={setUser} handleUpdateUser={handleUpdateUser} />
           <Routes>
             <Route path='/' element={<Home userInfo={userInfo} openModal={openModal} setOpenModal={setOpenModal} cards={cards} setCards={setCards}
             />} />
@@ -72,7 +72,7 @@ function App() {
             <Route path='/new' element={<NewCard userInfo={userInfo} />} />
             <Route path='/update/:id' element={<UpdateCard userInfo={userInfo} />} />
             <Route path='/sandBox' element={<UsersManagment handleUpdateUser={handleUpdateUser} users={users} setUsers={setUsers} />} />
-            <Route path='/update-user/:id' element={<UserUpdate userInfo={userInfo} onHide={() => setOpenProfileModal(false)} />} />
+            <Route path='/update-user/:id' element={<UserUpdate userInfo={userInfo} onHide={() => setOpenProfileModal(false)} handleUpdateUser={handleUpdateUser} />} />
             <Route path='*' element={<PageNotFound />} />
           </Routes>
           <Footer userInfo={userInfo} />
