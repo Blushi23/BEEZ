@@ -50,6 +50,10 @@ h3,
     text-align: justify;
 }
 
+.card-description {
+    text-align: justify;
+}
+
 .register-link {
     text-decoration-color: #ff851b;
 }

@@ -38,7 +38,7 @@ const BusinessModal: FunctionComponent<BusinessModalProps> = ({ show, onHide, ca
                     <Modal.Body>
                         <div className="row modalBody">
                             <div className="col-md-8">
-                                <p>{card.description}</p>
+                                <p className="card-description">{card.description}</p>
                             </div>
                             <div className="col-md-4">
                                 <img src={card.imageUrl} width={200} alt={card.imageAlt} />
