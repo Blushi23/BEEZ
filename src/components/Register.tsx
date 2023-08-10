@@ -30,7 +30,7 @@ const Register: FunctionComponent<RegisterProps> = ({ setUserInfo }) => {
             phone: yup.string().required("phone number length must be at least 9 characters long").min(9).max(14),
             email: yup.string().required("please enter a valid email").email(),
             password: yup.string().required("password must be at least 8 characters long").min(8)
-                .matches(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d{4,})(?=.*[@$!%*_-?&#^])[A-Za-z\d@$!%#^_-*?&]{8,}$/, "Password must contain at least 1 uppercase letter, lowercase letter, 4 digits and special character (@$!%*?_-&#^)"),
+                .matches(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*_-?&#^])[A-Za-z\d@$!%#^_-*?&]{8,}$/, "Password must contain at least 1 uppercase letter, lowercase letter, 4 digits and special character (@$!%*?_-&#^)"),
             imageUrl: yup.string().min(2),
             imageAlt: yup.string().min(2),
             state: yup.string().min(2),
