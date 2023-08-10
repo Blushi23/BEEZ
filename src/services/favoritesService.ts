@@ -32,4 +32,3 @@ export async function removeFromFav(userId: number, cardId: number) {
         console.log(error);
     }
 }
-

@@ -1,9 +1,11 @@
 :root {
   --background-color: #fff;
+  --background-image: url(/public/images/lightBeeHive.jpg);
   --card-background: #d2d6d8;
   --about-background: #f5e8a76c;
   --text-color: #000;
   --card-border: 2px solid #c1bebc;
+  --card-shadow: 8px 8px 8px #5b5b59;
   --modal-color: #f2f2f2;
   --red-color: #c62828;
   --yellow-color: #ffb300;
@@ -11,12 +13,14 @@
 }
 
 .dark {
-  --background-color: #1a1e23;
+  --background-color: #2d2d2ce6;
+  --background-image: url(/public/images/darkBeeHive.jpg);
   --card-background: #3A4750;
   --about-background: #30302fe6;
   --text-color: #d8d1d1;
   --card-border: 2px solid #f3f0dc;
-  --modal-color: #1a1919c7;
+  --card-shadow: 4px 4px 6px #fae7ad;
+  --modal-color: #1b1b1ad8;
   --red-color: #c62828;
   --yellow-color: #ffb300;
   --floating-label: #ff851b;
@@ -24,13 +28,18 @@
 
 .App {
   background: var(--background-color);
-  color: var(--text-color)
+  background-image: var(--background-image);
+  /* background-image: cross-fade(../../../../../../Downloads/beeHive.webp); */
+  /* opacity: initial; */
+  color: var(--text-color);
+
 }
 
 .card {
   background: var(--background-color);
   color: var(--text-color);
   border: var(--card-border);
+  box-shadow: var(--card-shadow);
 }
 
 p,

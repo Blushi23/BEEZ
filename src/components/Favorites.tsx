@@ -44,7 +44,6 @@ const Favorites: FunctionComponent<FavoritesProps> = ({ userInfo, openModal, set
         if (window.confirm("Are you sure?")) {
             deleteCard(id)
                 .then((res) => {
-                    // render();
                     navigate("/favorites")
                     successMsg("Card deleted successfully!");
                 })
