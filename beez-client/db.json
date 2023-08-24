@@ -69,6 +69,24 @@
       "zip": "12345",
       "role": "business",
       "id": 5
+    },
+    {
+      "firstName": "Naftali",
+      "middleName": "",
+      "lastName": "Blutstein",
+      "phone": "054-2509444",
+      "email": "nafnafb@walla.com",
+      "password": "Naf12345!",
+      "imageUrl": "https://kinderland.co.il/tm-content/uploads/2015/04/50964-ninja.jpg",
+      "imageAlt": "",
+      "state": "",
+      "country": "israel",
+      "city": "tel aviv",
+      "street": "natan alterman",
+      "houseNumber": 4,
+      "zip": "",
+      "role": "user",
+      "id": 6
     }
   ],
   "cards": [
@@ -251,6 +269,24 @@
       "zip": "",
       "owner": "mew@gmail.com",
       "id": 14
+    },
+    {
+      "title": "le moulin dore",
+      "subtitle": "pastry shop",
+      "description": "Find the best french pasteries just next to your home",
+      "phone": "02-9414416",
+      "email": "moulindore44@gmail.com",
+      "web": "https://moulindore.co.il/he",
+      "imageUrl": "https://images.squarespace-cdn.com/content/v1/5d2d16204fe7bf0001ad679d/1660907145231-S7LNSVUPRA478ARBBE6L/MOULIN+DORE%CC%81+%E2%80%93+MOULIN+DORE.jpg?format=500w",
+      "imageAlt": "",
+      "state": "",
+      "country": "Israel",
+      "city": "Hadera",
+      "street": "Jerusalem",
+      "houseNumber": 1,
+      "zip": "",
+      "owner": "michalbl12@gmail.com",
+      "id": 15
     }
   ],
   "favorites": [
@@ -421,6 +457,11 @@
         }
       ],
       "id": 1
+    },
+    {
+      "userId": 6,
+      "cards": [],
+      "id": 6
     }
   ]
 }
