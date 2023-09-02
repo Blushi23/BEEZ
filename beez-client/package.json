@@ -17,6 +17,7 @@
     "cors": "^2.8.5",
     "deck.gl": "^8.9.22",
     "formik": "^2.4.2",
+    "jwt-decode": "^3.1.2",
     "mapbox-gl": "^2.15.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.8.0",

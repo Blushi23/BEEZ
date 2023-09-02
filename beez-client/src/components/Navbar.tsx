@@ -44,7 +44,7 @@ const Navbar: FunctionComponent<NavbarProps> = ({ userInfo, setUserInfo, darkMod
                                     {(userInfo.role === "business" || userInfo.role === "admin") && (
                                         <>
                                             <li className="nav-item">
-                                                <NavLink className="nav-link" to="my-cards">My Cards</NavLink>
+                                                <NavLink className="nav-link" to="/cards/my-cards">My Cards</NavLink>
                                             </li>
                                             {userInfo.role === "admin" &&
                                                 <li className="nav-item">

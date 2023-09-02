@@ -16,14 +16,14 @@ interface HomeProps {
 }
 
 const Home: FunctionComponent<HomeProps> = ({ userInfo, openModal, setOpenModal, cards, setCards }) => {
-    let [favorites, setFavorites] = useState<number[]>([])
+    let [favorites, setFavorites] = useState<string[]>([])
     let [cardsChanged, setCardsChanged] = useState<boolean>(false);
     let theme = useContext(SiteTheme);
 
     useEffect(() => {
         getFav(userInfo.userId).then((res) => {
             let userFavorites = res.data.find((fav: any) => fav.userId === userInfo.userId);
-            let defaultCards: number[] = userFavorites?.cards.map((card: any) => card.id) || [];
+            let defaultCards: string[] = userFavorites?.cards.map((card: any) => card.id) || [];
             setFavorites(defaultCards)
         }).catch((err) => console.log(err))
         getCards().then((res) => setCards(res.data)).catch((err) => console.log(err));
@@ -32,7 +32,7 @@ const Home: FunctionComponent<HomeProps> = ({ userInfo, openModal, setOpenModal,
     let render = () => {
         setCardsChanged(!cardsChanged)
     }
-    let handleDelete = (id: number) => {
+    let handleDelete = (id: string) => {
         if (window.confirm("Are you sure?")) {
             deleteCard(id)
                 .then((res) => {
@@ -43,17 +43,17 @@ const Home: FunctionComponent<HomeProps> = ({ userInfo, openModal, setOpenModal,
         }
     };
     let handleAddToFav = (card: Card) => {
-        if (favorites.includes(card.id as number)) {
-            removeFromFav(userInfo.userId, card.id as number)
+        if (favorites.includes(card._id as string)) {
+            removeFromFav(userInfo.userId, card._id as string)
                 .then((res) => {
-                    setFavorites(favorites.filter((id) => id !== card.id));
+                    setFavorites(favorites.filter((id) => id !== card._id));
                     successMsg(`${card.title} business card was removed from favorites!`);
                 })
                 .catch((err) => { console.log(err); });
         } else {
             addToFav(userInfo.userId, card)
                 .then((res) => {
-                    setFavorites([...favorites, card.id as number]);
+                    setFavorites([...favorites, card._id as string]);
                     successMsg(`${card.title} business card was added to favorites!`);
                 })
                 .catch((err) => { console.log(err); });
@@ -71,7 +71,7 @@ const Home: FunctionComponent<HomeProps> = ({ userInfo, openModal, setOpenModal,
                     <div className="row">
                         {cards.map((card: Card) => (
                             <div
-                                key={card.id}
+                                key={card._id}
                                 className="card col-md-3 mx-2 my-2 "
                                 style={{ width: "22rem" }}
                             >
@@ -80,7 +80,7 @@ const Home: FunctionComponent<HomeProps> = ({ userInfo, openModal, setOpenModal,
                                     className="card-img-top mt-2"
                                     style={{ width: "20rem", height: "12rem" }}
                                     alt={card.imageAlt}
-                                    onClick={() => setOpenModal(card.id)}
+                                    onClick={() => setOpenModal(card._id)}
                                 />
                                 <div className="card-title text-center mt-2">
                                     <h5>{card.title}</h5>
@@ -97,10 +97,10 @@ const Home: FunctionComponent<HomeProps> = ({ userInfo, openModal, setOpenModal,
                                                 <>
                                                     {(userInfo.email === card.owner || userInfo.role === "admin") && (
                                                         <div className="col left-icons text-start">
-                                                            < Link to={`update/${card.id}`} className="mx-1">
+                                                            < Link to={`update/${card._id}`} className="mx-1">
                                                                 <i className="fa-solid fa-pencil"></i>
                                                             </Link>
-                                                            <Link to="" className=" btn" onClick={() => handleDelete(card.id as number)}>
+                                                            <Link to="" className=" btn" onClick={() => handleDelete(card._id as string)}>
                                                                 <i className="fa-solid fa-trash" ></i>
                                                             </Link>
                                                         </div>
@@ -108,7 +108,7 @@ const Home: FunctionComponent<HomeProps> = ({ userInfo, openModal, setOpenModal,
                                                     <div className="col right-icons text-end">
                                                         <Link to={`tel:${card.phone}`}>
                                                             <i className="fa-solid fa-phone"></i></Link>
-                                                        {userInfo.role && (favorites.includes(card.id as number) ? (<button className="btn star" onClick={() => handleAddToFav(card)}> <i className="fa-solid fa-star text-warning" ></i></button>) : (<button className="btn star" onClick={() => handleAddToFav(card)}> <i className="fa-regular fa-star" ></i></button>)
+                                                        {userInfo.role && (favorites.includes(card._id as string) ? (<button className="btn star" onClick={() => handleAddToFav(card)}> <i className="fa-solid fa-star text-warning" ></i></button>) : (<button className="btn star" onClick={() => handleAddToFav(card)}> <i className="fa-regular fa-star" ></i></button>)
                                                         )}
                                                     </div>
                                                 </>
@@ -127,7 +127,7 @@ const Home: FunctionComponent<HomeProps> = ({ userInfo, openModal, setOpenModal,
                     </div>
                 </div >
             ) : (
-                <p>No products</p>
+                <p>No Cards To Show Yet</p>
             )}
             <BusinessModal
                 show={openModal}

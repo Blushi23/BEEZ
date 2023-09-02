@@ -17,7 +17,7 @@ const UpdateCard: FunctionComponent<UpdateCardProps> = ({ userInfo, onHide, hand
     let userId = id ? id : userInfo.userId
     let navigate = useNavigate();
     useEffect(() => {
-        getUserById(Number(userId))
+        getUserById(userId)
             .then((res) => {
                 setUser(res.data)
             })
@@ -47,7 +47,7 @@ const UpdateCard: FunctionComponent<UpdateCardProps> = ({ userInfo, onHide, hand
             zip: yup.string().min(5),
         }),
         onSubmit: (values) => {
-            updateUser(values, Number(userId))
+            updateUser(values, userId)
                 .then((res) => {
                     handleUpdateUser(res.data)
                     if (id) { navigate(-1) }

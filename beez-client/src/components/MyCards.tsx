@@ -25,7 +25,7 @@ const MyCards: FunctionComponent<MyCardsProps> = ({ userInfo, openModal, setOpen
         setCardsChanged(!cardsChanged)
     }
 
-    let handleDelete = (id: number) => {
+    let handleDelete = (id: string) => {
         if (window.confirm("Are you sure?")) {
             deleteCard(id)
                 .then((res) => {
@@ -44,7 +44,7 @@ const MyCards: FunctionComponent<MyCardsProps> = ({ userInfo, openModal, setOpen
                     <div className="row">
                         {cardsCreated.map((card: Card) => (
                             <div
-                                key={card.id}
+                                key={card._id}
                                 className="card col-md-3 mx-2 my-2"
                                 style={{ width: "22rem" }}
                             >
@@ -53,7 +53,7 @@ const MyCards: FunctionComponent<MyCardsProps> = ({ userInfo, openModal, setOpen
                                     className="card-img-top mt-2"
                                     style={{ width: "20rem", height: "12rem" }}
                                     alt={card.imageAlt}
-                                    onClick={() => setOpenModal(card.id)}
+                                    onClick={() => setOpenModal(card._id)}
                                 />
                                 <div className="card-title text-center mt-2">
                                     <h5>{card.title}</h5>
@@ -70,8 +70,8 @@ const MyCards: FunctionComponent<MyCardsProps> = ({ userInfo, openModal, setOpen
                                                 <>
                                                     {(userInfo.email === card.owner || userInfo.role === "admin") && (
                                                         <div className="col left-icons text-start">
-                                                            < Link to={`/update/${card.id}`}><i className="fa-solid fa-pencil"></i></Link>
-                                                            <Link to="" className="btn" onClick={() => handleDelete(card.id as number)}>
+                                                            < Link to={`/update/${card._id}`}><i className="fa-solid fa-pencil"></i></Link>
+                                                            <Link to="" className="btn" onClick={() => handleDelete(card._id as string)}>
                                                                 <i className="fa-solid fa-trash" ></i></Link>
                                                         </div>
                                                     )}

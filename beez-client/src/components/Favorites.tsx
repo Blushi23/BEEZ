@@ -15,17 +15,17 @@ interface FavoritesProps {
 const Favorites: FunctionComponent<FavoritesProps> = ({ userInfo, openModal, setOpenModal }) => {
     let [savedCards, setSavedCards] = useState<Card[]>([]);
     let navigate = useNavigate();
-    let [favorites, setFavorites] = useState<number[]>([])
+    let [favorites, setFavorites] = useState<string[]>([])
     let [cardsChanged, setCardsChanged] = useState<boolean>(false);
     let render = () => {
         setCardsChanged(!cardsChanged)
     }
 
     let handleAddToFav = (card: Card) => {
-        if (favorites.includes(card.id as number)) {
-            removeFromFav(userInfo.userId, card.id as number)
+        if (favorites.includes(card._id as string)) {
+            removeFromFav(userInfo.userId, card._id as string)
                 .then((res) => {
-                    setFavorites(favorites.filter((id) => id !== card.id));
+                    setFavorites(favorites.filter((id) => id !== card._id));
                     render()
                     successMsg(`${card.title} business card was removed from favorites!`);
                 })
@@ -33,14 +33,14 @@ const Favorites: FunctionComponent<FavoritesProps> = ({ userInfo, openModal, set
         } else {
             addToFav(userInfo.userId, card)
                 .then((res) => {
-                    setFavorites([...favorites, card.id as number]);
+                    setFavorites([...favorites, card._id as string]);
                     successMsg(`${card.title} business card was added to favorites!`);
                 })
                 .catch((err) => { console.log(err); });
         }
     };
 
-    let handleDelete = (id: number) => {
+    let handleDelete = (id: string) => {
         if (window.confirm("Are you sure?")) {
             deleteCard(id)
                 .then((res) => {
@@ -54,7 +54,7 @@ const Favorites: FunctionComponent<FavoritesProps> = ({ userInfo, openModal, set
     useEffect(() => {
         getFav(userInfo.userId).then((res) => {
             let userFavorites = res.data.find((fav: any) => fav.userId === userInfo.userId);
-            let defaultCards: number[] = userFavorites?.cards.map((card: any) => card.id) || [];
+            let defaultCards: string[] = userFavorites?.cards.map((card: any) => card.id) || [];
             setFavorites(defaultCards)
         }).catch((err) => console.log(err))
     }, [userInfo.userId, cardsChanged]);
@@ -63,7 +63,7 @@ const Favorites: FunctionComponent<FavoritesProps> = ({ userInfo, openModal, set
     }, []);
     useEffect(() => {
         getCards().then((res) => {
-            setSavedCards(res.data.filter((card: Card) => favorites.includes(card.id as number)));
+            setSavedCards(res.data.filter((card: Card) => favorites.includes(card._id as string)));
         }).catch((err) => console.log(err));
     }, [favorites]);
 
@@ -75,7 +75,7 @@ const Favorites: FunctionComponent<FavoritesProps> = ({ userInfo, openModal, set
                     <div className="row">
                         {savedCards.map((card: Card) => (
                             <div
-                                key={card.id}
+                                key={card._id}
                                 className="card col-md-3 mx-2 my-2"
                                 style={{ width: "22rem" }}
                             >
@@ -84,7 +84,7 @@ const Favorites: FunctionComponent<FavoritesProps> = ({ userInfo, openModal, set
                                     className="card-img-top mt-2"
                                     style={{ width: "20rem", height: "12rem" }}
                                     alt={card.imageAlt}
-                                    onClick={() => setOpenModal(card.id)}
+                                    onClick={() => setOpenModal(card._id)}
 
                                 />
                                 <div className="card-title text-center mt-2">
@@ -103,10 +103,10 @@ const Favorites: FunctionComponent<FavoritesProps> = ({ userInfo, openModal, set
                                                 <>
                                                     {(userInfo.email === card.owner || userInfo.role === "admin") && (
                                                         <div className="col left-icons text-start mt-1">
-                                                            < Link to={`/update/${card.id}`}>
+                                                            < Link to={`/update/${card._id}`}>
                                                                 <i className="fa-solid fa-pencil"></i>
                                                             </Link>
-                                                            <Link to="" className=" btn" onClick={() => handleDelete(card.id as number)}>
+                                                            <Link to="" className=" btn" onClick={() => handleDelete(card._id as string)}>
                                                                 <i className="fa-solid fa-trash mx-1" ></i>
                                                             </Link>
                                                         </div>

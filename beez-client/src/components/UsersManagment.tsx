@@ -22,7 +22,7 @@ const UsersManagment: FunctionComponent<UsersManagmentProps> = ({ handleUpdateUs
             .catch((err) => console.log(err));
     }, [dataChanged, setUsers]);
 
-    let handleToDelete = (id: number) => {
+    let handleToDelete = (id: string) => {
         if (window.confirm("Are you sure?")) {
             deleteUser(id)
                 .then(() => {
@@ -54,16 +54,16 @@ const UsersManagment: FunctionComponent<UsersManagmentProps> = ({ handleUpdateUs
                         </thead>
                         <tbody >
                             {users.map((user: User) => (
-                                <tr key={user.id}>
-                                    <td>{user.id}</td>
+                                <tr key={user.email}>
+                                    <td>{user._id}</td>
                                     <td>{user.firstName}</td>
                                     <td>{user.lastName}</td>
                                     <td>{user.phone}</td>
                                     <td>{user.email}</td>
                                     <td>{user.role}</td>
-                                    <td><i className="fa-solid fa-user-pen text-warning" onClick={() => navigate(`/update-user/${user.id}`)}></i></td>
+                                    <td><i className="fa-solid fa-user-pen text-warning" onClick={() => navigate(`/update-user/${user._id}`)}></i></td>
                                     <td>
-                                        <i className="fa-solid fa-user-xmark text-danger" onClick={() => handleToDelete(user.id as number)}></i></td>
+                                        <i className="fa-solid fa-user-xmark text-danger" onClick={() => handleToDelete(user._id as string)}></i></td>
                                 </tr>
                             ))}
                         </tbody>

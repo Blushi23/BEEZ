@@ -13,7 +13,7 @@ export default interface User {
     street?: string;
     houseNumber?: number;
     zip?: string;
-    id?: number;
+    _id?: string;
     role?: string;
 
 }

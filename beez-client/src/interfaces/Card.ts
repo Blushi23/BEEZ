@@ -14,7 +14,7 @@ interface Card {
     street: string,
     houseNumber: number,
     zip?: string,
-    id?: number
+    _id?: string
 }
 
 export default Card;

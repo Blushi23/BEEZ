@@ -2,7 +2,7 @@ import { useFormik } from "formik";
 import { FunctionComponent, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
-import { addUser } from "../services/usersService";
+import { addUser, getTokenDetailes } from "../services/usersService";
 import { successMsg } from "../services/feedbackService";
 import { createFav } from "../services/favoritesService";
 
@@ -43,16 +43,17 @@ const Register: FunctionComponent<RegisterProps> = ({ setUserInfo }) => {
         onSubmit: (values) => {
             addUser(values)
                 .then((res) => {
-                    navigate("/")
+                    sessionStorage.setItem("token", JSON.stringify({ token: res.data }))
                     sessionStorage.setItem("userInfo", JSON.stringify({
-                        email: res.data.email,
-                        password: res.data.password,
-                        role: res.data.role,
-                        userId: res.data.id
-                    }));
-                    setUserInfo(JSON.parse(sessionStorage.getItem("userInfo") as string));
-                    createFav(res.data.id)
+                        email: (getTokenDetailes() as any).email,
+                        userId: (getTokenDetailes() as any)._id,
+                        role: (getTokenDetailes() as any).role,
+                        imageUrl: (getTokenDetailes() as any).imageUrl
+                    }))
+                    setUserInfo(JSON.parse(sessionStorage.getItem("userInfo") as string))
+                    // createFav(res.data.id)
                     successMsg(`${values.firstName} ${values.lastName} registered successfully`);
+                    navigate("/")
                 })
                 .catch((err) => console.log(err))
         }

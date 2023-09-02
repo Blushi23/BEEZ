@@ -2,7 +2,7 @@ import { useFormik } from "formik";
 import { FunctionComponent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import * as yup from "yup";
-import { checkUser } from "../services/usersService";
+import { checkUser, getTokenDetailes } from "../services/usersService";
 import { errorMsg, successMsg } from "../services/feedbackService";
 
 interface LoginProps {
@@ -20,16 +20,17 @@ const Login: FunctionComponent<LoginProps> = ({ setUserInfo }) => {
         onSubmit: (values) => {
             checkUser(values)
                 .then((res) => {
-                    if (res.data.length) {
-                        navigate("/");
-                        successMsg(`You are logged in as ${values.email}`);
-                        sessionStorage.setItem("userInfo", JSON.stringify({
-                            email: res.data[0].email, role: res.data[0].role,
-                            userId: res.data[0].id,
-                        }));
-                        setUserInfo(JSON.parse(sessionStorage.getItem("userInfo") as string))
-                    }
-                    else errorMsg("Wrong email or password");
+                    sessionStorage.setItem("token", JSON.stringify({ token: res.data }))
+                    sessionStorage.setItem("userInfo", JSON.stringify({
+                        email: (getTokenDetailes() as any).email,
+                        userId: (getTokenDetailes() as any)._id,
+                        role: (getTokenDetailes() as any).role,
+                        imageUrl: (getTokenDetailes() as any).imageUrl
+                    }))
+                    setUserInfo(JSON.parse(sessionStorage.getItem("userInfo") as string))
+                    successMsg(`You are logged in as ${values.email}`);
+                    navigate("/");
+
                 })
                 .catch((err) => console.log(err));
         },

@@ -13,7 +13,7 @@ const UpdateCard: FunctionComponent<UpdateCardProps> = ({ userInfo }) => {
     let { id } = useParams();
     let navigate = useNavigate();
     useEffect(() => {
-        getCardById(Number(id))
+        getCardById(id as string)
             .then((res) => {
                 setCard(res.data)
             })
@@ -43,7 +43,7 @@ const UpdateCard: FunctionComponent<UpdateCardProps> = ({ userInfo }) => {
             zip: yup.string().min(5),
         }),
         onSubmit: (values) => {
-            updateCard(values, Number(id))
+            updateCard(values, id as string)
                 .then((res) => {
                     navigate(-1)
                     successMsg("Card updated successfully!")

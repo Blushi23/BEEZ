@@ -19,7 +19,7 @@ const UpdateProfileModal: FunctionComponent<UpdateProfileModalProps> = ({ show, 
 
     useEffect(() => {
         if (userId) {
-            getUserById(user.id as number)
+            getUserById(user.id as string)
                 .then((res) => setUser(res.data))
                 .catch((err) => console.log(err))
         }

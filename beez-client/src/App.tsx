@@ -39,7 +39,7 @@ function App() {
 
   useEffect(() => {
     if (userInfo.userId) {
-      getUserById(userInfo.userId as number)
+      getUserById(userInfo.userId as string)
         .then((res) => setUser(res.data))
         .catch((err) => console.log(err))
     }
@@ -47,7 +47,7 @@ function App() {
 
   const handleUpdateUser = (updatedUser: User) => {
     setUsers((prevUsers) =>
-      prevUsers.map((user) => (user.id === updatedUser.id ? updatedUser : user))
+      prevUsers.map((user) => (user._id === updatedUser._id ? updatedUser : user))
     );
   };
 
@@ -65,7 +65,7 @@ function App() {
             <Route path='/login' element={<Login setUserInfo={setUserInfo} />} />
             <Route path='/about' element={<About />} />
             <Route path='/favorites' element={<Favorites userInfo={userInfo} openModal={openModal} setOpenModal={setOpenModal} />} />
-            <Route path='/my-cards' element={<MyCards userInfo={userInfo} openModal={openModal} setOpenModal={setOpenModal} />} />
+            <Route path='/cards/my-cards' element={<MyCards userInfo={userInfo} openModal={openModal} setOpenModal={setOpenModal} />} />
             <Route path='/new' element={<NewCard userInfo={userInfo} />} />
             <Route path='/update/:id' element={<UpdateCard userInfo={userInfo} />} />
             <Route path='/sandBox' element={<UsersManagment handleUpdateUser={handleUpdateUser} users={users} setUsers={setUsers} />} />
