@@ -44,6 +44,11 @@ router.post("/", async (req, res) => {
         user.password = await bcrypt.hash(user.password, salt)
         await user.save();
 
+        // Create user's favorites
+        let favorites = new Favorite({ userId: user._id, cards: [] });
+
+        await favorites.save();
+
         const token = jwt.sign({ _id: user._id, role: user.role, email: user.email }, process.env.jwtKey);
 
         res.status(201).send(token)

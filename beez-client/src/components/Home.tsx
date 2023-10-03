@@ -3,7 +3,7 @@ import Card from "../interfaces/Card";
 import { successMsg } from "../services/feedbackService";
 import { Link } from "react-router-dom";
 import { deleteCard, getCards } from "../services/cardsService";
-import { addToFav, getFav, removeFromFav } from "../services/favoritesService";
+import { addOrRemoveFromFav, getFav, } from "../services/favoritesService";
 import BusinessModal from "./BusinessModal";
 import { SiteTheme } from "../App";
 
@@ -21,11 +21,14 @@ const Home: FunctionComponent<HomeProps> = ({ userInfo, openModal, setOpenModal,
     let theme = useContext(SiteTheme);
 
     useEffect(() => {
-        getFav(userInfo.userId).then((res) => {
-            let userFavorites = res.data.find((fav: any) => fav.userId === userInfo.userId);
-            let defaultCards: string[] = userFavorites?.cards.map((card: any) => card.id) || [];
-            setFavorites(defaultCards)
-        }).catch((err) => console.log(err))
+        if (userInfo.userId) {
+            getFav(userInfo.userId).then((res) => {
+                let userFavorites = res.data.find((fav: any) => fav.userId === userInfo.userId);
+                let defaultCards: string[] = userFavorites?.cards.map((card: any) => card.id) || [];
+                setFavorites(defaultCards)
+            }).catch((err) => console.log(err))
+        }
+
         getCards().then((res) => setCards(res.data)).catch((err) => console.log(err));
     }, [cardsChanged, setCards, userInfo.userId]);
 
@@ -44,14 +47,14 @@ const Home: FunctionComponent<HomeProps> = ({ userInfo, openModal, setOpenModal,
     };
     let handleAddToFav = (card: Card) => {
         if (favorites.includes(card._id as string)) {
-            removeFromFav(userInfo.userId, card._id as string)
+            addOrRemoveFromFav(card._id as string)
                 .then((res) => {
                     setFavorites(favorites.filter((id) => id !== card._id));
                     successMsg(`${card.title} business card was removed from favorites!`);
                 })
                 .catch((err) => { console.log(err); });
         } else {
-            addToFav(userInfo.userId, card)
+            addOrRemoveFromFav(card._id as string)
                 .then((res) => {
                     setFavorites([...favorites, card._id as string]);
                     successMsg(`${card.title} business card was added to favorites!`);
@@ -59,6 +62,25 @@ const Home: FunctionComponent<HomeProps> = ({ userInfo, openModal, setOpenModal,
                 .catch((err) => { console.log(err); });
         }
     };
+
+    // let handleAddToFavorites = (card: Card) => {
+    //     if (favorites.includes(card._id as string)) {
+    //         addRemoveFavorites(card._id as string)
+    //             .then((res) => {
+    //                 setFavorites(favorites.filter((id) => id !== card._id));
+    //                 successMsg(`${card.title} business card was removed from favorites!`);
+    //             })
+    //             .catch((err) => { console.log(err); });
+    //     } else {
+    //         addRemoveFavorites(card._id as string)
+    //             .then((res) => {
+    //                 setFavorites([...favorites, card._id as string]);
+    //                 successMsg(`${card.title} business card was added to favorites!`);
+    //             })
+    //             .catch((err) => { console.log(err); });
+    //     }
+    // };
+
 
     return (
         <div className={`${theme}`} >

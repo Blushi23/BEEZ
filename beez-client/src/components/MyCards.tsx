@@ -17,7 +17,9 @@ const MyCards: FunctionComponent<MyCardsProps> = ({ userInfo, openModal, setOpen
 
     useEffect(() => {
         getCardByOwner(userInfo.email)
-            .then((res) => setCardsCreated(res.data))
+            .then((res) => {
+                setCardsCreated(res.data)
+            })
             .catch((err) => console.log(err))
     }, [userInfo.email, userInfo.userId, cardsChanged]);
 

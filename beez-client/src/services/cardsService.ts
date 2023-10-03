@@ -11,8 +11,9 @@ export function getCards() {
 export function getCardById(id: string) {
     return axios.get(`${api}/${id}`, { headers: { Authorization: JSON.parse(sessionStorage.getItem("token") as string).token } });
 }
+
 export function getCardByOwner(ownerEmail: string,) {
-    return axios.get(`${api}?owner=${ownerEmail}`, { headers: { Authorization: JSON.parse(sessionStorage.getItem("token") as string).token } });
+    return axios.get(`${api}/my-cards/${ownerEmail}`, { headers: { Authorization: JSON.parse(sessionStorage.getItem("token") as string).token } });
 }
 
 export function addCard(newCard: Card) {

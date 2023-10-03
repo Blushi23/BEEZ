@@ -1,6 +1,6 @@
 import { FunctionComponent, useEffect, useState } from "react";
 import Card from "../interfaces/Card";
-import { addToFav, getFav, removeFromFav } from "../services/favoritesService";
+import { addOrRemoveFromFav, getFav } from "../services/favoritesService";
 import { Link, useNavigate } from "react-router-dom";
 import { deleteCard, getCards } from "../services/cardsService";
 import { successMsg } from "../services/feedbackService";
@@ -23,7 +23,7 @@ const Favorites: FunctionComponent<FavoritesProps> = ({ userInfo, openModal, set
 
     let handleAddToFav = (card: Card) => {
         if (favorites.includes(card._id as string)) {
-            removeFromFav(userInfo.userId, card._id as string)
+            addOrRemoveFromFav(card._id as string)
                 .then((res) => {
                     setFavorites(favorites.filter((id) => id !== card._id));
                     render()
@@ -31,7 +31,7 @@ const Favorites: FunctionComponent<FavoritesProps> = ({ userInfo, openModal, set
                 })
                 .catch((err) => { console.log(err); });
         } else {
-            addToFav(userInfo.userId, card)
+            addOrRemoveFromFav(card._id as string)
                 .then((res) => {
                     setFavorites([...favorites, card._id as string]);
                     successMsg(`${card.title} business card was added to favorites!`);
@@ -52,7 +52,8 @@ const Favorites: FunctionComponent<FavoritesProps> = ({ userInfo, openModal, set
     };
 
     useEffect(() => {
-        getFav(userInfo.userId).then((res) => {
+        let userId: string = JSON.parse(sessionStorage.getItem("userInfo") as string).userId
+        getFav(userId).then((res) => {
             let userFavorites = res.data.find((fav: any) => fav.userId === userInfo.userId);
             let defaultCards: string[] = userFavorites?.cards.map((card: any) => card.id) || [];
             setFavorites(defaultCards)
@@ -61,6 +62,7 @@ const Favorites: FunctionComponent<FavoritesProps> = ({ userInfo, openModal, set
     useEffect(() => {
         getCards()
     }, []);
+
     useEffect(() => {
         getCards().then((res) => {
             setSavedCards(res.data.filter((card: Card) => favorites.includes(card._id as string)));

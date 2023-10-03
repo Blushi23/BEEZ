@@ -40,6 +40,7 @@ const Register: FunctionComponent<RegisterProps> = ({ setUserInfo }) => {
             houseNumber: yup.number().required("enter a valid house number").min(0),
             zip: yup.string().min(5),
         }),
+
         onSubmit: (values) => {
             addUser(values)
                 .then((res) => {
@@ -58,6 +59,7 @@ const Register: FunctionComponent<RegisterProps> = ({ setUserInfo }) => {
                 .catch((err) => console.log(err))
         }
     })
+
     return (<>
         <div className="container-register">
             <form className="mb-3" onSubmit={formik.handleSubmit}>

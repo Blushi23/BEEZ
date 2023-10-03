@@ -47,7 +47,7 @@ const cardSchema = joi.object({
 router.get("/", async (req, res) => {
     try {
         let cards = await Card.find()
-        if (!cards) return res.status(404).send("No cards found");
+        if (!cards) return chalk.red(res.status(404).send("No cards found"));
         res.status(200).send(cards)
     } catch (error) {
         res.status(400).send(error)
@@ -90,10 +90,10 @@ router.patch("/:id", auth, async (req, res) => {
 
 
 // Get all cards created by the specific user (owner) - לתקן
-router.get("/my-cards", auth, async (req, res) => {
+router.get("/my-cards/:owner", auth, async (req, res) => {
     try {
-        if (!req.payload.owner == req.params.owner) return res.status(400).send("Access denied")
-        const cards = await Card.find()
+        if (!req.payload.owner == req.params.email) return res.status(400).send("Access denied")
+        const cards = await Card.find({ owner: req.params.owner });
         if (!cards) return res.status(404).send("No cards found");
         res.status(200).send(cards)
     } catch (error) {
