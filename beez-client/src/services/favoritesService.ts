@@ -9,8 +9,8 @@ let api: string = `${process.env.REACT_APP_API}/favorites`;
 // export function getFav(userId: string) {
 //     return axios.get(`${api}?userId=${userId}`);
 // }
-export function getFav(userId: string) {
-    return axios.get(`${api}/${userId}`, { headers: { Authorization: JSON.parse(sessionStorage.getItem("token") as string).token } });
+export function getFav() {
+    return axios.get(api, { headers: { Authorization: JSON.parse(sessionStorage.getItem("token") as string).token } });
 }
 
 export function createFav(userId: string) {

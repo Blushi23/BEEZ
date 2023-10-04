@@ -83,10 +83,10 @@ router.put("/:id", auth, async (req, res) => {
 
 })
 
-// Mark a card as favorite - לתקן
-router.patch("/:id", auth, async (req, res) => {
-    if (!req.payload.email == req.params.email) return res.status(400).send("Permition denied. Available only for registered users");
-})
+// // Mark a card as favorite - לתקן
+// router.patch("/:id", auth, async (req, res) => {
+//     if (!req.payload.email == req.params.email) return res.status(400).send("Permition denied. Available only for registered users");
+// })
 
 
 // Get all cards created by the specific user (owner) - לתקן

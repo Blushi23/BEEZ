@@ -22,9 +22,9 @@ const Home: FunctionComponent<HomeProps> = ({ userInfo, openModal, setOpenModal,
 
     useEffect(() => {
         if (userInfo.userId) {
-            getFav(userInfo.userId).then((res) => {
-                let userFavorites = res.data.find((fav: any) => fav.userId === userInfo.userId);
-                let defaultCards: string[] = userFavorites?.cards.map((card: any) => card.id) || [];
+            getFav().then((res) => {
+                // let userFavorites = res.data.find((fav: any) => fav.userId === userInfo.userId);
+                let defaultCards: string[] = res.data?.map((card: any) => card._id) || [];
                 setFavorites(defaultCards)
             }).catch((err) => console.log(err))
         }

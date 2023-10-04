@@ -19,6 +19,7 @@ const Navbar: FunctionComponent<NavbarProps> = ({ userInfo, setUserInfo, darkMod
     let [openProfileModal, setOpenProfileModal] = useState<boolean>(false)
     let logout = () => {
         sessionStorage.removeItem("userInfo");
+        sessionStorage.removeItem("token");
         setUserInfo({ email: false, role: false });
         navigate("/");
     }

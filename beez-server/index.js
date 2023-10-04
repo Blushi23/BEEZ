@@ -1,10 +1,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
+const path = require('path');
+const rfs = require('rotating-file-stream');
 const cors = require("cors");
 const users = require("./routes/users");
 const cards = require("./routes/cards");
 const favorites = require("./routes/favorites");
+const { method } = require("lodash");
 require("dotenv").config();
 const chalkModule = import('chalk');
 
@@ -19,7 +22,7 @@ import('chalk').then((chalk) => {
 
 app.use(express.json());
 app.use(cors());
-app.use(morgan('::date[clf] :method :url :status :response-time ms'));
+app.use(morgan(':date[clf] :method :url :status :response-time ms'));
 app.use("/api/users", users);
 app.use("/api/cards", cards);
 app.use("/api/favorites", favorites);
@@ -39,3 +42,10 @@ import('chalk').then((chalk) => {
         return color || status;
     });
 })
+
+//Set Logger (Terminal=All + Daily file= error >= 400)
+const accessLogStream = rfs.createStream('errors.log', {
+    interval: '1d',
+    path: path.join(__dirname, 'logs')
+})
+app.use(morgan("common", { stream: accessLogStream, skip: function (req, res) { return res.statusCode < 400 } }));
