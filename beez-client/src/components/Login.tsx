@@ -15,12 +15,13 @@ const Login: FunctionComponent<LoginProps> = ({ setUserInfo }) => {
         initialValues: { email: "", password: "" },
         validationSchema: yup.object({
             email: yup.string().required().email(),
-            password: yup.string().required().min(8),
+            password: yup.string().required().min(8)
         }),
         onSubmit: (values) => {
             checkUser(values)
                 .then((res) => {
                     sessionStorage.setItem("token", JSON.stringify({ token: res.data }))
+
                     sessionStorage.setItem("userInfo", JSON.stringify({
                         email: (getTokenDetailes() as any).email,
                         userId: (getTokenDetailes() as any)._id,
@@ -30,9 +31,9 @@ const Login: FunctionComponent<LoginProps> = ({ setUserInfo }) => {
                     setUserInfo(JSON.parse(sessionStorage.getItem("userInfo") as string))
                     successMsg(`You are logged in as ${values.email}`);
                     navigate("/");
-
                 })
                 .catch((err) => console.log(err));
+            errorMsg('Wrong Email or Password')
         },
     })
 

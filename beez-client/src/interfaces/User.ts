@@ -1,4 +1,5 @@
 export default interface User {
+
     firstName?: string;
     middleName?: string;
     lastName?: string;
@@ -15,5 +16,4 @@ export default interface User {
     zip?: string;
     _id?: string;
     role?: string;
-
 }

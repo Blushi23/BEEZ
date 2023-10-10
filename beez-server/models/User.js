@@ -1,5 +1,6 @@
 const mongoose = require("mongoose")
 const userSchema = new mongoose.Schema({
+
     firstName: {
         type: String,
         required: false,
@@ -14,6 +15,7 @@ const userSchema = new mongoose.Schema({
         required: false,
         minlength: 2
     },
+
     phone: {
         type: String,
         required: false,
@@ -30,6 +32,7 @@ const userSchema = new mongoose.Schema({
         required: true,
         minlength: 8
     },
+
     imageUrl: {
         type: String,
         required: false
@@ -38,6 +41,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: false
     },
+
     state: {
         type: String,
         required: false

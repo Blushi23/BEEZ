@@ -24,24 +24,24 @@ const cardSchema = joi.object({
 })
 
 // Create new card
-// router.post("/", auth, async (req, res) => {
-//     try {
-//         if (!req.payload.role === "admin" || !req.payload.role === "business") return res.status(400).send("You are not allowed to add a business card.")
+router.post("/", auth, async (req, res) => {
+    try {
+        if (!req.payload.role === "admin" || !req.payload.role === "business") return res.status(400).send("You are not allowed to add a business card.")
 
-//         const { error } = cardSchema.validate(req.body);
-//         if (error) return res.status(400).send(error);
+        const { error } = cardSchema.validate(req.body);
+        if (error) return res.status(400).send(error);
 
-//         let card = await Card.findOne({ title: req.body.title, email: req.body.email });
-//         if (card) return res.status(400).send("Card already exists");
+        let card = await Card.findOne({ title: req.body.title, email: req.body.email });
+        if (card) return res.status(400).send("Card already exists");
 
-//         card = new Card(req.body);
-//         await card.save();
-//         res.status(200).send(card)
+        card = new Card(req.body);
+        await card.save();
+        res.status(200).send(card)
 
-//     } catch (error) {
-//         res.status(400).send(error);
-//     }
-// })
+    } catch (error) {
+        res.status(400).send(error);
+    }
+})
 
 // Get all cards
 router.get("/", async (req, res) => {
