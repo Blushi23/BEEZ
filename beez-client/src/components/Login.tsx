@@ -21,7 +21,6 @@ const Login: FunctionComponent<LoginProps> = ({ setUserInfo }) => {
             checkUser(values)
                 .then((res) => {
                     sessionStorage.setItem("token", JSON.stringify({ token: res.data }))
-
                     sessionStorage.setItem("userInfo", JSON.stringify({
                         email: (getTokenDetailes() as any).email,
                         userId: (getTokenDetailes() as any)._id,
@@ -32,8 +31,10 @@ const Login: FunctionComponent<LoginProps> = ({ setUserInfo }) => {
                     successMsg(`You are logged in as ${values.email}`);
                     navigate("/");
                 })
-                .catch((err) => console.log(err));
-            errorMsg('Wrong Email or Password')
+                .catch((err) => {
+                    console.log(err);
+                    errorMsg('Wrong Email or Password');
+                })
         },
     })
 

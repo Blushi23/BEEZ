@@ -4,6 +4,8 @@ import User from "../interfaces/User";
 import { deleteUser, getUsers } from "../services/usersService";
 import { successMsg } from "../services/feedbackService";
 import { SiteTheme } from "../App";
+import { deleteFavorites } from "../services/favoritesService";
+import Favorites from "./Favorites";
 
 interface UsersManagmentProps {
     handleUpdateUser: Function;
@@ -22,17 +24,34 @@ const UsersManagment: FunctionComponent<UsersManagmentProps> = ({ handleUpdateUs
             .catch((err) => console.log(err));
     }, [dataChanged, setUsers]);
 
-    let handleToDelete = (id: string) => {
+    let handleToDelete = async (id: string) => {
         if (window.confirm("Are you sure?")) {
-            deleteUser(id)
-                .then(() => {
-                    successMsg("User deleted succuessfully");
-                    setDataChanged(!dataChanged);
-                })
-                .catch(
-                    (error) => console.log(error));
+            try {
+                successMsg("User deleted successfully");
+                setDataChanged(!dataChanged);
+                await deleteUser(id);
+                await deleteFavorites(id);
+
+            } catch (error) {
+                console.log(error);
+            }
         }
     };
+    // let handleToDelete = async (id: string) => {
+    //     if (window.confirm("Are you sure?")) {
+    //         try {
+    //             successMsg("User and favorites deleted successfully");
+    //             setDataChanged(!dataChanged);
+    //             await deleteUser(id);
+    //             await deleteFavorites(id);
+
+    //         } catch (error) {
+    //             console.log(error);
+    //         }
+    //     }
+    // };
+
+
 
     return (
         <>
@@ -63,7 +82,8 @@ const UsersManagment: FunctionComponent<UsersManagmentProps> = ({ handleUpdateUs
                                     <td>{user.role}</td>
                                     <td><i className="fa-solid fa-user-pen text-warning" onClick={() => navigate(`/update-user/${user._id}`)}></i></td>
                                     <td>
-                                        <i className="fa-solid fa-user-xmark text-danger" onClick={() => handleToDelete(user._id as string)}></i></td>
+                                        <i className="fa-solid fa-user-xmark text-danger" onClick={() => handleToDelete(user._id as string)}></i>
+                                    </td>
                                 </tr>
                             ))}
                         </tbody>

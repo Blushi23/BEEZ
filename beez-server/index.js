@@ -43,7 +43,6 @@ import('chalk').then((chalk) => {
     });
 })
 
-//Set Logger (Terminal=All + Daily file= error >= 400)
 const accessLogStream = rfs.createStream('errors.log', {
     interval: '1d',
     path: path.join(__dirname, 'logs')

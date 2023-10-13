@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { addUser, getTokenDetailes } from "../services/usersService";
 import { successMsg } from "../services/feedbackService";
-import { createFav } from "../services/favoritesService";
 
 interface RegisterProps {
     setUserInfo: Function;
@@ -52,7 +51,6 @@ const Register: FunctionComponent<RegisterProps> = ({ setUserInfo }) => {
                         imageUrl: (getTokenDetailes() as any).imageUrl
                     }))
                     setUserInfo(JSON.parse(sessionStorage.getItem("userInfo") as string))
-                    // createFav(res.data.id)
                     successMsg(`${values.firstName} ${values.lastName} registered successfully`);
                     navigate("/")
                 })

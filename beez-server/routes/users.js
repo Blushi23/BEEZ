@@ -136,8 +136,15 @@ router.patch("/:id", auth, async (req, res) => {
 router.delete("/:id", auth, async (req, res) => {
     try {
         if (!req.payload.role === "admin" || !req.payload._id == req.params.id) return res.status(400).send("Access denied! You cannot edit this profile.");
-        let user = await User.findByIdAndDelete({ _id: req.params.id });
+        const user = await User.findByIdAndDelete({ _id: req.params.id });
+        // let user = await User.findByIdAndDelete({ _id: req.params.id });
+
+        // let userFav = await Favorite.findByIdAndDelete({ userId: req.params.id });
+
         if (!user) return res.status(404).send("There is no such registered user");
+
+        await Favorite.deleteMany({ userId: req.params.id });
+
         res.status(200).send("User deleted successfully");
 
     } catch (error) {

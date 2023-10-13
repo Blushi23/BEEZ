@@ -23,8 +23,8 @@ export function getUsers() {
 export function getUserById(id: string) {
     return axios.get(`${api}/${id}`, { headers: { Authorization: JSON.parse(sessionStorage.getItem("token") as string).token } });
 }
-export function deleteUser(_id: string) {
-    return axios.delete(`${api}/${_id}`, { headers: { Authorization: JSON.parse(sessionStorage.getItem("token") as string).token } })
+export function deleteUser(id: string) {
+    return axios.delete(`${api}/${id}`, { headers: { Authorization: JSON.parse(sessionStorage.getItem("token") as string).token } })
 }
 
 // export function getUserByEmail(email: string) {

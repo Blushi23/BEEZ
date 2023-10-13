@@ -1,8 +1,6 @@
 import axios from 'axios';
 import Card from '../interfaces/Card';
 import _ from "lodash";
-// import { string } from 'yup';
-// import { Card } from 'react-bootstrap';
 
 let api: string = `${process.env.REACT_APP_API}/favorites`;
 
@@ -19,24 +17,7 @@ export function createFav(userId: string) {
 
 export function addOrRemoveFromFav(cardToAdd: string) {
     const cardId = { _id: cardToAdd }
-    // let card = _.pick(cardToAdd, [
-    //     "title",
-    //     "subtitle",
-    //     "description",
-    //     "phone",
-    //     "email",
-    //     "web",
-    //     "imageUrl",
-    //     "imageAlt",
-    //     "state",
-    //     "country",
-    //     "city",
-    //     "street",
-    //     "houseNumber",
-    //     "zip",
-    //     "_id",
-    //     "owner",
-    // ]);
+
     return axios.post(api, cardId, {
         headers: {
             Authorization: JSON.parse(sessionStorage.getItem("token") as string).token
@@ -44,6 +25,11 @@ export function addOrRemoveFromFav(cardToAdd: string) {
 
     })
 }
+
+export function deleteFavorites(id: string) {
+    return axios.delete(`${api}/${id}`, { headers: { Authorization: JSON.parse(sessionStorage.getItem("token") as string).token } })
+}
+
 // export async function addToFav(userId: string, cardToAdd: Card) {
 //     try {
 //         let res = await getFav(userId);

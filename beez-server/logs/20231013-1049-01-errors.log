@@ -1,0 +1,9 @@
+::1 - - [12/Oct/2023:16:20:55 +0000] "POST /api/users/users/login HTTP/1.1" [31m404[39m 161
+::ffff:10.0.0.138 - - [12/Oct/2023:17:49:21 +0000] "GET / HTTP/1.1" [31m404[39m 139
+::1 - - [12/Oct/2023:18:16:42 +0000] "DELETE /api/favorites/65282875fdd11e4ee0883a39 HTTP/1.1" [31m404[39m 180
+::1 - - [12/Oct/2023:18:23:12 +0000] "DELETE /api/favorites/652838c7fdd11e4ee0883a48 HTTP/1.1" [31m404[39m 180
+::1 - - [12/Oct/2023:18:31:49 +0000] "DELETE /api/favorites/652839d4fdd11e4ee0883a53 HTTP/1.1" [31m404[39m 180
+::1 - - [12/Oct/2023:18:48:17 +0000] "DELETE /api/favorites/65283f51fdd11e4ee0883a6b HTTP/1.1" [31m404[39m 180
+::1 - - [12/Oct/2023:18:57:38 +0000] "DELETE /api/favorites/favorites/65284194fdd11e4ee0883a7a HTTP/1.1" [31m404[39m 190
+::ffff:10.0.0.138 - - [12/Oct/2023:19:41:08 +0000] "GET / HTTP/1.1" [31m404[39m 139
+::ffff:10.0.0.138 - - [12/Oct/2023:20:12:36 +0000] "GET / HTTP/1.1" [31m404[39m 139
