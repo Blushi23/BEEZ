@@ -18,7 +18,7 @@
 
 <h3>REACT set up</h3>
 
-<li>downloads needed: react-router-dom, Bootstrap, react-bootstrap, axios, formik, yup, react-toastify, react-hooks.</li>
+<li>downloads needed: react-router-dom, Bootstrap, react-bootstrap, axios, cors, formik, yup, jwt-decode, lodash, react-toastify, react-hooks.</li>
 <li>add node_modules folder: run in the terminal npm install.</li>
 <li>run db.json:  json-server --watch db.json --port 8000.</li>
 <li>run the app: npm start.</li>
