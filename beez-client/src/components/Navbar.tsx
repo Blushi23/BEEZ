@@ -75,8 +75,8 @@ const Navbar: FunctionComponent<NavbarProps> = ({ userInfo, setUserInfo, darkMod
                             )}
                             {!userInfo.email && (
                                 <>
-                                    <button className="btn" onClick={() => navigate("/register")}>Register</button>
-                                    <button className="btn" onClick={() => navigate("/login")}>Login</button>
+                                    <button className="btn" type="button" onClick={() => navigate("/register")}>Register</button>
+                                    <button className="btn" type="button" onClick={() => navigate("/login")}>Login</button>
                                 </>)}
                         </form>
                     </div>

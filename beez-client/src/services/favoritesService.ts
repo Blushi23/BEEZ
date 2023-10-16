@@ -26,9 +26,9 @@ export function addOrRemoveFromFav(cardToAdd: string) {
     })
 }
 
-export function deleteFavorites(id: string) {
-    return axios.delete(`${api}/${id}`, { headers: { Authorization: JSON.parse(sessionStorage.getItem("token") as string).token } })
-}
+// export function deleteFavorites(id: string) {
+//     return axios.delete(`${api}/${id}`, { headers: { Authorization: JSON.parse(sessionStorage.getItem("token") as string).token } })
+// }
 
 // export async function addToFav(userId: string, cardToAdd: Card) {
 //     try {

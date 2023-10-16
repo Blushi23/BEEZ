@@ -36,7 +36,7 @@ router.post("/", auth, async (req, res) => {
 
         card = new Card(req.body);
         await card.save();
-        res.status(200).send(card)
+        res.status(201).send(card)
 
     } catch (error) {
         res.status(400).send(error);
@@ -89,7 +89,7 @@ router.put("/:id", auth, async (req, res) => {
 // })
 
 
-// Get all cards created by the specific user (owner) - לתקן
+// Get all cards created by the specific user (owner) 
 router.get("/my-cards/:owner", auth, async (req, res) => {
     try {
         if (!req.payload.owner == req.params.email) return res.status(400).send("Access denied")

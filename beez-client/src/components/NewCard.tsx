@@ -15,12 +15,14 @@ const NewCard: FunctionComponent<NewCardProps> = ({ userInfo }) => {
     let handleToRefresh = () => {
         if (window.confirm("Do you want to clear the form?")) {
             formik.resetForm();
+            formik.setFieldValue("houseNumber", "");
             successMsg("Form is clear")
         }
     }
     useEffect(() => {
         formik.setFieldValue("houseNumber", "");
     }, []);
+
     let formik = useFormik({
         initialValues: { title: "", subtitle: "", description: "", phone: "", email: "", web: "", imageUrl: "", imageAlt: "", state: "", country: "", city: "", street: "", houseNumber: 0, zip: "", owner: `${userInfo.email}` },
         validationSchema: yup.object({
@@ -29,10 +31,10 @@ const NewCard: FunctionComponent<NewCardProps> = ({ userInfo }) => {
             description: yup.string().required("Description must be at least 2 characters long").min(2),
             phone: yup.string().required("Phone number length must be at least 9 characters long").min(9).max(14),
             email: yup.string().required("Please enter a valid email").email(),
-            web: yup.string().min(2),
-            imageUrl: yup.string().min(2),
-            imageAlt: yup.string().min(2),
-            state: yup.string().min(2),
+            web: yup.string().min(0),
+            imageUrl: yup.string().min(0),
+            imageAlt: yup.string().min(0),
+            state: yup.string().min(0),
             country: yup.string().required("Country name must be at least 2 characters long").min(2),
             city: yup.string().required("City name must be at least 2 characters long").min(2),
             street: yup.string().required("Street name  must be at least 2 characters long").min(2),
@@ -198,7 +200,7 @@ const NewCard: FunctionComponent<NewCardProps> = ({ userInfo }) => {
                 </div>
                 <div className="row">
                     <div className="col">
-                        <button className="btn backBtn w-25 my-3" onClick={() => navigate(-1)}>Back</button>
+                        <button type="button" className="btn backBtn w-25 my-3" onClick={() => navigate(-1)}>Back</button>
                     </div>
                     <div className="col">
                         <button type="reset" className="btn refreshBtn w-25 my-3" onClick={() => handleToRefresh()}><i className="fa-solid fa-arrows-rotate"></i></button>

@@ -4,6 +4,7 @@ import { getCardById } from "../services/cardsService";
 import Card from "../interfaces/Card";
 import BusinessMap from "./BusinessMap";
 import { SiteTheme } from "../App";
+import { Link } from "react-router-dom";
 
 interface BusinessModalProps {
     show: boolean;
@@ -51,7 +52,7 @@ const BusinessModal: FunctionComponent<BusinessModalProps> = ({ show, onHide, ca
                             </div>
                             <div className="col-md-5">
                                 <p>Phone: {card.phone}</p>
-                                <p>Web: {card.web}</p>
+                                <p>Web: <Link to={`${card.web}`} target="_blank">{card.web}</Link> </p>
                                 <p>Email: {card.email}</p>
                                 <p>Adress: {card.street} {card.houseNumber}, {card.city}, {card.country}, {card.zip} {card.state} </p>
                             </div>
