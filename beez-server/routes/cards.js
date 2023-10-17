@@ -80,14 +80,7 @@ router.put("/:id", auth, async (req, res) => {
     } catch (error) {
         res.status(400).send(error)
     }
-
 })
-
-// // Mark a card as favorite - לתקן
-// router.patch("/:id", auth, async (req, res) => {
-//     if (!req.payload.email == req.params.email) return res.status(400).send("Permition denied. Available only for registered users");
-// })
-
 
 // Get all cards created by the specific user (owner) 
 router.get("/my-cards/:owner", auth, async (req, res) => {

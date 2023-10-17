@@ -4,8 +4,6 @@ import User from "../interfaces/User";
 import { deleteUser, getUsers } from "../services/usersService";
 import { successMsg } from "../services/feedbackService";
 import { SiteTheme } from "../App";
-// import { deleteFavorites } from "../services/favoritesService";
-import Favorites from "./Favorites";
 
 interface UsersManagmentProps {
     handleUpdateUser: Function;
@@ -36,21 +34,6 @@ const UsersManagment: FunctionComponent<UsersManagmentProps> = ({ handleUpdateUs
             }
         }
     };
-    // let handleToDelete = async (id: string) => {
-    //     if (window.confirm("Are you sure?")) {
-    //         try {
-    //             successMsg("User and favorites deleted successfully");
-    //             setDataChanged(!dataChanged);
-    //             await deleteUser(id);
-    //             await deleteFavorites(id);
-
-    //         } catch (error) {
-    //             console.log(error);
-    //         }
-    //     }
-    // };
-
-
 
     return (
         <>

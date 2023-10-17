@@ -16,14 +16,24 @@
 
 <p>We hope you enjoy using BEEZ and discovering new businesses! If you have any questions or feedback, please don’t hesitate to get in touch with us.</p>
 
-<h3>REACT set up</h3>
-
-<li>downloads needed: react-router-dom, Bootstrap, react-bootstrap, axios, cors, formik, yup, jwt-decode, lodash, react-toastify, react-hooks.</li>
-<li>add node_modules folder: run in the terminal npm install.</li>
-
 <h3>Node.js and mongoDB set up</h3>
+<p>In the terminal, navigate to cd beez-server and then:</p>
+<li>add node_modules folder: run in the terminal npm install.</li>
 <li>downloads needed: bcryptjs, joi, jsonwebtoken, config, morgan, chalk, cors, express, dotenv, lodash, mongoose, rotating-file-stream </li>
-<li>run server side:in the terminal, write cd beez-server and then nodemon index</li>
-<li>run the app: in the terminal, write cd beez-client and then npm start.</li>
+<li>In the .env file, replace the password in the DB with the received password </li>
+<li>run server side: write nodemon index</li>
 
-<p>For any more questions, you are more then welcome to contact me, michalbl12@gmail.com</p>
+<h3>REACT set up</h3>
+<p>In the terminal, navigate to cd beez-client and then:</p>
+<li>add node_modules folder: run in the terminal npm install.</li>
+<li>downloads needed: react-router-dom, Bootstrap, react-bootstrap, axios, cors, formik, yup, jwt-decode, lodash, react-toastify, react-hooks.</li>
+<li>run the app:write npm start.</li>
+
+<h3>Registered users details</h3>
+<ol>
+<li>Admin user - Michalbl12@gmail.com, password - Admin123!</li>
+<li>Business user - israel@gmail.com, password - Israel123!</li>
+<li>Regular user - user@test.com, password - User1234!</li>
+</ol>
+
+<p>For any more questions, you are more then welcome to contact me, <mailto:"michalbl12@gmail.com"> michalbl12@gmail.com</p>

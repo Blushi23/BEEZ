@@ -5,11 +5,14 @@ let api: string = `${process.env.REACT_APP_API}/cards`
 
 export function getCards() {
     return axios.get(api,
-        // { headers: { Authorization: JSON.parse(sessionStorage.getItem("token") as string).token } }
     );
 }
 export function getCardById(id: string) {
-    return axios.get(`${api}/${id}`, { headers: { Authorization: JSON.parse(sessionStorage.getItem("token") as string).token } });
+    const token = sessionStorage.getItem("token");
+
+    if (!token) return axios.get(`${api}/${id}`)
+
+    return axios.get(`${api}/${id}`, { headers: { Authorization: JSON.parse(token).token } });
 }
 
 export function getCardByOwner(ownerEmail: string,) {

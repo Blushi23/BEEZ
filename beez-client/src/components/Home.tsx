@@ -23,13 +23,14 @@ const Home: FunctionComponent<HomeProps> = ({ userInfo, openModal, setOpenModal,
     useEffect(() => {
         if (userInfo.userId) {
             getFav().then((res) => {
-                // let userFavorites = res.data.find((fav: any) => fav.userId === userInfo.userId);
                 let defaultCards: string[] = res.data?.map((card: any) => card._id) || [];
                 setFavorites(defaultCards)
             }).catch((err) => console.log(err))
         }
 
-        getCards().then((res) => setCards(res.data)).catch((err) => console.log(err));
+        getCards()
+            .then((res) => setCards(res.data))
+            .catch((err) => console.log(err));
     }, [cardsChanged, setCards, userInfo.userId]);
 
     let render = () => {
@@ -62,25 +63,6 @@ const Home: FunctionComponent<HomeProps> = ({ userInfo, openModal, setOpenModal,
                 .catch((err) => { console.log(err); });
         }
     };
-
-    // let handleAddToFavorites = (card: Card) => {
-    //     if (favorites.includes(card._id as string)) {
-    //         addRemoveFavorites(card._id as string)
-    //             .then((res) => {
-    //                 setFavorites(favorites.filter((id) => id !== card._id));
-    //                 successMsg(`${card.title} business card was removed from favorites!`);
-    //             })
-    //             .catch((err) => { console.log(err); });
-    //     } else {
-    //         addRemoveFavorites(card._id as string)
-    //             .then((res) => {
-    //                 setFavorites([...favorites, card._id as string]);
-    //                 successMsg(`${card.title} business card was added to favorites!`);
-    //             })
-    //             .catch((err) => { console.log(err); });
-    //     }
-    // };
-
 
     return (
         <div className={`${theme}`} >

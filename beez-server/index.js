@@ -7,7 +7,6 @@ const cors = require("cors");
 const users = require("./routes/users");
 const cards = require("./routes/cards");
 const favorites = require("./routes/favorites");
-const { method } = require("lodash");
 require("dotenv").config();
 const chalkModule = import('chalk');
 

@@ -75,5 +75,4 @@ const Login: FunctionComponent<LoginProps> = ({ setUserInfo }) => {
             </div>        </>
     )
 }
-
 export default Login;

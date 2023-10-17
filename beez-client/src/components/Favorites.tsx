@@ -53,16 +53,9 @@ const Favorites: FunctionComponent<FavoritesProps> = ({ userInfo, openModal, set
 
     useEffect(() => {
 
-        // let userId: string = JSON.parse(sessionStorage.getItem("userInfo") as string).userId
         getFav().then((res) => {
-            // let userFavorites = res.data.find((fav: any) => fav.userId === userInfo.userId);
             let defaultCards: string[] = res.data?.map((card: any) => card._id) || [];
             setFavorites(defaultCards)
-            // let userFavorites = res.data.find((fav: any) => fav.userId === userInfo.userId);
-            // let defaultCards: string[] = userFavorites?.cards.map((card: any) => card.id) || [];
-            // setFavorites(defaultCards)
-
-
         }).catch((err) => console.log(err))
     }, [userInfo.userId, cardsChanged]);
     useEffect(() => {
@@ -93,7 +86,6 @@ const Favorites: FunctionComponent<FavoritesProps> = ({ userInfo, openModal, set
                                     style={{ width: "20rem", height: "12rem" }}
                                     alt={card.imageAlt}
                                     onClick={() => setOpenModal(card._id)}
-
                                 />
                                 <div className="card-title text-center mt-2">
                                     <h5>{card.title}</h5>

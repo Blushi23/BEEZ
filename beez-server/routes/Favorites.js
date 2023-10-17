@@ -26,9 +26,6 @@ const cardSchema = joi.object({
 // add card to favorites
 router.post("/", auth, async (req, res) => {
     try {
-        //joi validation
-        // const { error } = cardSchema.validate(req.body)
-        // if (error) return res.status(400).send(error);
 
         // find the user's favorites
         let favorites = await Favorite.findOne({ userId: req.payload._id })
@@ -69,28 +66,12 @@ router.get("/", auth, async (req, res) => {
 router.delete("/:id", auth, async (req, res) => {
     try {
         if (!req.payload.role === "admin") return res.status(400).send("Access denied! This user is not an admin.");
-
         let favorites = await Favorite.findByIdAndDelete({ _id: req.params.id });
-
         if (!favorites) return res.status(404).send("No favorites found for this user");
-
         res.status(200).send("User favorites deleted successfully");
-
     } catch (error) {
         res.status(400).send(error)
-
     }
 })
-
-
-// router.get("/:id", auth, async (req, res) => {
-//     try {
-//         let favorites = await Favorite.findOne({ userId: req.params._id });
-//         if (!favorites) return res.status(404).send("There are no favorite cards for this user");
-//         res.status(200).send(favorites.cards);
-//     } catch (error) {
-//         res.status(400).send(error);
-//     }
-// });
 
 module.exports = router;

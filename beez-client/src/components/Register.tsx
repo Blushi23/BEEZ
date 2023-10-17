@@ -58,7 +58,6 @@ const Register: FunctionComponent<RegisterProps> = ({ setUserInfo }) => {
                     console.log(err)
                     errorMsg("User already registered")
                 })
-
         }
     })
 
@@ -203,9 +202,7 @@ const Register: FunctionComponent<RegisterProps> = ({ setUserInfo }) => {
                             {formik.touched.role && formik.errors.role && (
                                 <p className="text-danger">{formik.errors.role}</p>
                             )}
-                        </div>
-                    </div>
-                </div>
+                        </div></div></div>
                 <button
                     type="submit"
                     className="btn btn-warning w-25 my-3"
@@ -216,8 +213,7 @@ const Register: FunctionComponent<RegisterProps> = ({ setUserInfo }) => {
                     </div>
                     <div className="col">
                         <button type="reset" className="btn refreshBtn w-25 my-3" onClick={() => handleToRefresh()}><i className="fa-solid fa-arrows-rotate"></i></button>
-                    </div>
-                </div>
+                    </div></div>
             </form >
         </div >
     </>)

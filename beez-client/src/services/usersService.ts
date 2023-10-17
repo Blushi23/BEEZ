@@ -26,7 +26,3 @@ export function getUserById(id: string) {
 export function deleteUser(id: string) {
     return axios.delete(`${api}/${id}`, { headers: { Authorization: JSON.parse(sessionStorage.getItem("token") as string).token } })
 }
-
-// export function getUserByEmail(email: string) {
-//     return axios.get(`${api} ? email = ${email}`)
-// }

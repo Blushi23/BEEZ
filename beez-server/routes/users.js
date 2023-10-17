@@ -122,8 +122,7 @@ router.put("/:id", auth, async (req, res) => {
 router.patch("/:id", auth, async (req, res) => {
     try {
         if (!req.payload.role === "admin" || !req.payload._id == req.params.id) return res.status(400).send("Access denied! You cannot edit this profile.");
-        // const { error } = userSchema.validate(req.body)
-        // if (error) return res.status(400).send(error);
+
         let user = await User.findByIdAndUpdate({ _id: req.params.id }, req.body, { new: true });
         res.status(200).send(user);
 
@@ -137,9 +136,6 @@ router.delete("/:id", auth, async (req, res) => {
     try {
         if (!req.payload.role === "admin" || !req.payload._id == req.params.id) return res.status(400).send("Access denied! You cannot edit this profile.");
         const user = await User.findByIdAndDelete({ _id: req.params.id });
-        // let user = await User.findByIdAndDelete({ _id: req.params.id });
-
-        // let userFav = await Favorite.findByIdAndDelete({ userId: req.params.id });
 
         if (!user) return res.status(404).send("There is no such registered user");
 
@@ -152,8 +148,4 @@ router.delete("/:id", auth, async (req, res) => {
     }
 })
 
-
-
 module.exports = router;
-
-
