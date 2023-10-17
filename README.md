@@ -27,7 +27,7 @@
 <p>In the terminal, navigate to cd beez-client and then:</p>
 <li>add node_modules folder: run in the terminal npm install.</li>
 <li>downloads needed: react-router-dom, Bootstrap, react-bootstrap, axios, cors, formik, yup, jwt-decode, lodash, react-toastify, react-hooks.</li>
-<li>run the app:write npm start.</li>
+<li>run the app: write npm start.</li>
 
 <h3>Registered users details</h3>
 <ol>
