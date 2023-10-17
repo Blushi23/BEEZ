@@ -36,4 +36,4 @@
 <li>Regular user - user@test.com, password - User1234!</li>
 </ol>
 
-<p>For any more questions, you are more then welcome to contact me, <a href="michalbl12@gmail.com">michalbl12@gmail.com</a></p>
+<p>For any more questions, you are more then welcome to contact me, (mailto:michalbl12@gmail.com)</p>
